@@ -29,7 +29,7 @@ print(f"[INFO]: ASSISTANT STARTED AS {ASSNAME}!")
 async def load_start():
     restart_data = await clean_restart_stage()
     if restart_data:
-        print("[INFO]: SENDING RESTART STATUS TO YUKKI SERVER")
+        print("[INFO]: SENDING RESTART STATUS TO PRIME SERVER")
         try:
             await app.edit_message_text(
                 restart_data["chat_id"],
@@ -51,9 +51,9 @@ async def load_start():
         except Exception as e:
             print("Error came while clearing db")
             pass     
-    await app.send_message(LOG_GROUP_ID, "Yui Music Bot Started")
-    await client.send_message(LOG_GROUP_ID, "Assistant Of Yui Music Started")
-    print("[INFO]: STARTED THE YUKKI BOT AND SENDING THE INFO TO YUKKI SERVER")
+    await app.send_message(LOG_GROUP_ID, "Vieena Music Bot Started")
+    await client.send_message(LOG_GROUP_ID, "Assistant Of Vieena Music Started")
+    print("[INFO]: STARTED BOT AND SENDING THE INFO TO VIEENA SERVER SERVER")
     
    
 loop = asyncio.get_event_loop()
@@ -63,4 +63,4 @@ run()
 idle()
 loop.close()
 
-print("[LOG] CLOSING THE YUI MUSIC BOT")
+print("[LOG] CLOSING THE VIEENA MUSIC BOT")
