@@ -2,8 +2,7 @@
   <img src="https://telegra.ph/file/add31c6018ba67309bd3b.jpg">
 </p>
 
-
-<h2 align="centre">SteadyXYukki Music Player</h2>
+<h4><p align="center"> SteadyXYukki Music Player </p></h4>
 
 <h3>Requirements 📝</h3>
 
