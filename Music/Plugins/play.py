@@ -138,8 +138,8 @@ async def play(_, message: Message):
  #                               reply_markup=InlineKeyboardMarkup(
  #                                   [
  #                                       [
- #                                           InlineKeyboardButton(text="Support Group", url="https://t.me/vieenasupport"),
- #                                           InlineKeyboardButton(text="Channel Update", url="https://t.me/ahhsudahlahhh"),
+ #                                           InlineKeyboardButton(text="Support Group", url="https://t.me/SteadySupportGroup"),
+ #                                           InlineKeyboardButton(text="Channel Update", url="https://t.me/vtbchannell"),
  #                                       ]
  #                                   ]
  #                               ))
