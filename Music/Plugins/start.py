@@ -42,6 +42,31 @@ pstart_markup=InlineKeyboardMarkup(
             ]
         ) 
 
+
+@Client.on_message(filters.group & filters.command(["startt", "helpp"]))
+async def startt(_, message: Message):
+    chat_id = message.chat.id
+    await message.reply_text(
+        f"""Hi {message.from_user.mention()}!
+
+Thanks for using {BOT_NAME} in {message.chat.title}.
+For any assistance or help, checkout our support group and channel.""",
+       reply_markup=pstart_markup,
+       disable_web_page_preview=True
+    )
+
+    
+@Client.on_message(filters.private & filters.incoming & filters.command("startt"))
+async def play(_, message: Message):
+    if len(message.command) == 1:
+        user_id = message.from_user.id
+        user_name = message.from_user.first_name
+        rpk = "["+user_name+"](tg://user?id="+str(user_id)+")" 
+        await app.send_message(message.chat.id,
+            text=f"Hi. {rpk}!\n\nThis is Vieena Music Bot.\nI play music on Telegram's Voice Chats.\n\nOnly for selected chats.",
+            parse_mode="markdown",
+            reply_markup=pstart_markup
+        )
     elif len(message.command) == 2:                                                           
         query = message.text.split(None, 1)[1]
         f1 = (query[0])
@@ -68,7 +93,7 @@ pstart_markup=InlineKeyboardMarkup(
 📎 **Channel Link:** [Visit From Here]({x["channel_url"]})
 🔗 **Link:** [Link]({x["webpage_url"]})
 
-⚡️ __Searched Powered By Steady Music Bot__"""
+⚡️ __Searched Powered By Vieena Music Bot__"""
             link = (x["webpage_url"])
             buttons = personal_markup(link)
             userid = message.from_user.id
