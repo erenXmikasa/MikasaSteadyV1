@@ -361,7 +361,7 @@ async def play(_, message: Message):
         thumb ="cache/photo_2021-11-17_22-43-02.jpg"
         buttons = search_markup(ID1, ID2, ID3, ID4, ID5, duration1, duration2, duration3, duration4, duration5, user_id, query)
         await mystic.edit( 
-            f"**List Of Result**\n\n1 <b>{title1}</b>\n💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID1})__</u>\nPowered by 𝙎𝙩𝙚𝙖𝙙𝙮 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩\n\n 2 <b>{title2}</b>\n💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID2})__</u>\nPowered by 𝙎𝙩𝙚𝙖𝙙𝙮 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩\n\n 3 <b>{title3}</b>\n💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID3})__</u>\nPowered by 𝙎𝙩𝙚𝙖𝙙𝙮 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩\n\n4 <b>{title4}</b>\n💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID4})__</u>\nPowered by 𝙎𝙩𝙚𝙖𝙙𝙮 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩\n\n5 <b>{title5}</b>\n💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID5})__</u>\nPowered by 𝙎𝙩𝙚𝙖𝙙𝙮 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩",    
+            f"**List Of Result**\n\n1 <b>{title1}</b>\n💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID1})__</u>\n\n 2 <b>{title2}</b>\n💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID2})__</u>\n\n 3 <b>{title3}</b>\n💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID3})__</u>\n\n4 <b>{title4}</b>\n💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID4})__</u>\n\n5 <b>{title5}</b>\n💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID5})__</u>\nPowered by 𝙎𝙩𝙚𝙖𝙙𝙮 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩",    
             reply_markup=InlineKeyboardMarkup(buttons),
             disable_web_page_preview=True
         )  
@@ -623,7 +623,7 @@ async def popat(_,CallbackQuery):
     if i == 1:
         buttons = search_markup2(ID6, ID7, ID8, ID9, ID10, duration6, duration7, duration8, duration9, duration10 ,user_id, query)
         await CallbackQuery.edit_message_text(
-            f"6 <b>{title6}</b>\n💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID6})__</u>\n Powered by 𝙎𝙩𝙚𝙖𝙙𝙮 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩\n\n7 <b>{title7}</b>\n💡<u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID7})__</u>\n Powered by 𝙎𝙩𝙚𝙖𝙙𝙮 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩\n\n8 <b>{title8}</b>\n💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID8})__</u>\n Powered by 𝙎𝙩𝙚𝙖𝙙𝙮 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩\n\n9 <b>{title9}</b>\n💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID9})__</u>\n Powered by 𝙎𝙩𝙚𝙖𝙙𝙮 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩\n\n10 <b>{title10}</b>\n💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID10})__</u>\n Powered by 𝙎𝙩𝙚𝙖𝙙𝙮 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩",    
+            f"6 <b>{title6}</b>\n💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID6})__</u>\n\n7 <b>{title7}</b>\n💡<u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID7})__</u>\n\n8 <b>{title8}</b>\n💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID8})__</u>\n\n9 <b>{title9}</b>\n💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID9})__</u>\n\n10 <b>{title10}</b>\n💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID10})__</u>\n Powered by 𝙎𝙩𝙚𝙖𝙙𝙮 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩",    
             reply_markup=InlineKeyboardMarkup(buttons),
             disable_web_page_preview=True
         )  
