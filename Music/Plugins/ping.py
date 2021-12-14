@@ -25,12 +25,11 @@ Disk: {disk}%'''
     return stats
 
 
-@app.on_message(filters.command(["mping", f"ping@{BOT_USERNAME}"]))
+@app.on_message(filters.command(["ping", f"ping@{BOT_USERNAME}"]))
 async def ping(_, message):
     uptime = await bot_sys_stats()
     start = datetime.now()
-    response = await message.reply_photo(
-        photo="cache/queryc.jpg",
+    response = await message.caption(
         caption=">> Pong!"
     )
     end = datetime.now()
