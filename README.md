@@ -1,4 +1,9 @@
-<h2 align="centre">Yukki Music Player</h2>
+<p align="center">
+  <img src="https://telegra.ph/file/add31c6018ba67309bd3b.jpg">
+</p>
+
+
+<h2 align="centre">SteadyXYukki Music Player</h2>
 
 <h3>Requirements 📝</h3>
 
