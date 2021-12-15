@@ -26,6 +26,7 @@ from os import path
 import random
 import asyncio
 import shutil
+import psutil
 from time import time
 import time as sedtime
 from Music import (
