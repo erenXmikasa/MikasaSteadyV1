@@ -131,9 +131,11 @@ def time_to_seconds(time):
     )
 
 @Client.on_message(command("play"))
-async def play(_, message: Message):
+
     cpu_len = psutil.cpu_percent(interval=0.5)
     ram = psutil.virtual_memory().percent
+
+async def play(_, message: Message):
     chat_id = message.chat.id
  #   if not await is_served_chat(chat_id):
  #       await message.reply_text(f"❌ Not in allowed list chats\n\n{BOT_NAME} is only for allowed chats. Ask any Sudo User to allow your chat.\nCheck Sudo Users List Below",
