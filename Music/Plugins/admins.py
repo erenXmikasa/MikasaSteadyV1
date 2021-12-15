@@ -153,6 +153,10 @@ async def stop_cmd(_, message):
     
 @app.on_message(filters.command(["skip", f"skip@{BOT_USERNAME}", "sk"]))
 async def stop_cmd(_, message): 
+
+    cpu_len = psutil.cpu_percent(interval=0.5)
+    ram = psutil.virtual_memory().percent
+
     if message.sender_chat:
         return await message.reply_text("You're an __Anonymous Admin__!\nRevert back to User Account.") 
     permission = "can_manage_voice_chats"
@@ -248,8 +252,8 @@ async def stop_cmd(_, message):
                 semx = await app.get_users(userid)
                 await message.reply_photo(
                 photo= thumb,
+                caption=(f"👩‍💻 **Permintaan Oleh: ** {checking}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}% \n\n🚧 <b>__Antrian Ke:__</b> <b>#{position}!</b>"),
                 reply_markup=InlineKeyboardMarkup(buttons),    
-                caption=(f"<b>__Skipped Voice Chat__</b>\n\n🎥 <b>__Started Playing:__ </b>[{title[:25]}]({url}) \n⏳ <b>__Duration:__</b> {duration} Mins\n👤 **__Requested by:__** {semx.mention}")
             )   
                 os.remove(thumb)
             else:      
@@ -279,6 +283,6 @@ async def stop_cmd(_, message):
                 await message.reply_photo(
                 photo=f"downloads/{_chat_}final.png",
                 reply_markup=InlineKeyboardMarkup(buttons),
-                caption=f"<b>__Skipped Voice Chat__</b>\n\n🎥 <b>__Started Playing:__</b> {title} \n⏳ <b>__Duration:__</b> {duration} \n👤 <b>__Requested by:__ </b> {username}",
+                caption=f"👩‍💻 **Permintaan Oleh: ** {requester}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%",
                 )
                 return
