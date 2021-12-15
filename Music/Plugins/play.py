@@ -132,10 +132,8 @@ def time_to_seconds(time):
 
 @Client.on_message(command("play"))
 async def play(_, message: Message):
-
     cpu_len = psutil.cpu_percent(interval=0.5)
     ram = psutil.virtual_memory().percent
-
     chat_id = message.chat.id
  #   if not await is_served_chat(chat_id):
  #       await message.reply_text(f"❌ Not in allowed list chats\n\n{BOT_NAME} is only for allowed chats. Ask any Sudo User to allow your chat.\nCheck Sudo Users List Below",
@@ -428,7 +426,7 @@ async def play(_, message: Message):
         await message.reply_photo(
         photo=thumb,
         reply_markup=InlineKeyboardMarkup(buttons),    
-        caption=(f"🎥 <b>__Playing:__</b>[{title[:25]}]({link}) \n⏳ <b>__Duration:__</b> {duration} \n👤 <b>__Requested by:__</b>{checking}")
+        caption=f"👩‍💻 **Permintaan Oleh: ** {checking}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%",
     )   
         return await mystic.delete()
          
@@ -545,7 +543,7 @@ async def startyuplay(_,CallbackQuery):
         await mystic.delete()
         m = await CallbackQuery.message.reply_photo(
         photo=thumb,
-        caption=(f"🎬 <b>__Song:__ </b>[{title[:25]}]({url}) \n⏳ <b>__Duration:__</b> {duration} \n💡 <b>__Info:__</b> [More Information](https://t.me/vckyclone)\n👤 <b>__Requested by:__ </b>{checking} \n🚧 <b>__Queued at:__</b> <b>#{position}!</b>"),
+        caption=f"👩‍💻 **Permintaan Oleh: ** {checking}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%",
         reply_markup=InlineKeyboardMarkup(buttons)
     )
         os.remove(thumb)
@@ -567,7 +565,7 @@ async def startyuplay(_,CallbackQuery):
         m = await CallbackQuery.message.reply_photo(
         photo=thumb,
         reply_markup=InlineKeyboardMarkup(buttons),    
-        caption=f"👩‍💻 **Permintaan Oleh: ** {requester}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%",
+        caption=f"👩‍💻 **Permintaan Oleh: ** {checking}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%",
     )   
         os.remove(thumb)
         await CallbackQuery.message.delete()
