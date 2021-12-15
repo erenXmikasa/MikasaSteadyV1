@@ -284,6 +284,6 @@ async def stop_cmd(_, message):
                 await message.reply_photo(
                 photo=f"downloads/{_chat_}final.png",
                 reply_markup=InlineKeyboardMarkup(buttons),
-                caption=f"👩‍💻 **Permintaan Oleh: ** {requester}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%",
+                caption=f"👩‍💻 **Permintaan Oleh: ** {checking}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%",
                 )
                 return
