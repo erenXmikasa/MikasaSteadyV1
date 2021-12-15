@@ -395,7 +395,7 @@ async def play(_, message: Message):
         checking = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
         await message.reply_photo(
             photo=thumb,
-            caption=(f"🎬 <b>__Song:__</b>[{title[:25]}]({link}) \n⏳ <b>__Duration:__</b> {duration} \n👤 <b>__Requested by:__ </b>{checking} \n🚧 <b>__Queued at:__</b> <b>#{position}!</b>"),
+            caption=(f"👩‍💻 **Permintaan Oleh: ** {checking}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}% \n\n🚧 <b>__Antrian Ke:__</b> <b>#{position}!</b>"),
             reply_markup=InlineKeyboardMarkup(buttons)
         )
         return await mystic.delete()     
@@ -568,7 +568,7 @@ async def startyuplay(_,CallbackQuery):
         m = await CallbackQuery.message.reply_photo(
         photo=thumb,
         reply_markup=InlineKeyboardMarkup(buttons),    
-        caption=(f"🎥 <b>__Playing:__ </b>[{title[:25]}]({url}) \n⏳ <b>__Duration:__</b> {duration} \n💡 <b>__Info:__</b> [More Information](https://t.me/vckyclone)\n👤**__Requested by:__** {checking}")
+        caption=(f"👩‍💻 **Permintaan Oleh: ** {checking}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%")
     )   
         os.remove(thumb)
         await CallbackQuery.message.delete()
