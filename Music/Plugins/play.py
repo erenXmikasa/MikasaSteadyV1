@@ -435,6 +435,9 @@ async def play(_, message: Message):
     
 @Client.on_callback_query(filters.regex(pattern=r"Music"))
 async def startyuplay(_,CallbackQuery): 
+    cpu_len = psutil.cpu_percent(interval=0.5)
+    ram = psutil.virtual_memory().percent
+    
     callback_data = CallbackQuery.data.strip()
     chat_id = CallbackQuery.message.chat.id
     chat_title = CallbackQuery.message.chat.title
