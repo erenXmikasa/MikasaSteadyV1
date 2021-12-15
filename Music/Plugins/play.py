@@ -631,7 +631,7 @@ async def popat(_,CallbackQuery):
     if i == 2:
         buttons = search_markup(ID1, ID2, ID3, ID4, ID5, duration1, duration2, duration3, duration4, duration5, user_id, query)
         await CallbackQuery.edit_message_text(
-            f"1 <b>{title1}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n2 <b>{title2}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n3 <b>{title3}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n4 <b>{title4}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n5 <b>{title5}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>",    
+            f"1️⃣ <b>{title1}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n2️⃣ <b>{title2}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n3️⃣ <b>{title3}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n4️⃣ <b>{title4}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n5️⃣ <b>{title5}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>",    
             reply_markup=InlineKeyboardMarkup(buttons),
             disable_web_page_preview=True 
         )  
