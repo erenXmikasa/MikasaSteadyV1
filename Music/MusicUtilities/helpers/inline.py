@@ -18,9 +18,6 @@ def play_markup(videoid, user_id):
                 InlineKeyboardButton(text="Owner", url="https://t.me/vckyclone"),
                 InlineKeyboardButton(text="⚙ Menu", callback_data=f'other {videoid}|{user_id}'),
             ],
-            [      
-                InlineKeyboardButton(text="🗑 Close Menu", callback_data=f'close2')
-            ],
         ]
     return buttons 
 
