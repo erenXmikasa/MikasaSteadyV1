@@ -253,7 +253,7 @@ async def stop_cmd(_, message):
                 semx = await app.get_users(userid)
                 await message.reply_photo(
                 photo= thumb,
-                caption=(f"👩‍💻 **Permintaan Oleh: ** {checking}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}% \n\n🚧 <b>__Antrian Ke:__</b> <b>#{position}!</b>"),
+                caption=(f"👩‍💻 **Permintaan Oleh: ** {checking}\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}% \n\n🚧 <b>__Antrian Ke:__</b> <b>#{position}!</b>"),
                 reply_markup=InlineKeyboardMarkup(buttons),    
             )   
                 os.remove(thumb)
@@ -284,6 +284,6 @@ async def stop_cmd(_, message):
                 await message.reply_photo(
                 photo=f"downloads/{_chat_}final.png",
                 reply_markup=InlineKeyboardMarkup(buttons),
-                caption=f"👩‍💻 **Permintaan Oleh: ** {checking}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%",
+                caption=f"👩‍💻 **Permintaan Oleh: ** {checking}\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%",
                 )
                 return
