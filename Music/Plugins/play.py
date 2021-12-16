@@ -395,7 +395,7 @@ async def play(_, message: Message):
         checking = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
         await message.reply_photo(
             photo=thumb,
-            caption=(f"👩‍💻 **Permintaan Oleh: ** {checking}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}% \n\n🚧 <b>__Antrian Ke:__</b> <b>#{position}!</b>"),
+            caption=(f"👩‍💻 **Permintaan Oleh: ** {checking}\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}% \n\n🚧 <b>__Antrian Ke:__</b> <b>#{position}!</b>"),
             reply_markup=InlineKeyboardMarkup(buttons)
         )
         return await mystic.delete()     
@@ -426,7 +426,7 @@ async def play(_, message: Message):
         await message.reply_photo(
         photo=thumb,
         reply_markup=InlineKeyboardMarkup(buttons),    
-        caption=f"👩‍💻 **Permintaan Oleh: ** {checking}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%",
+        caption=f"👩‍💻 **Permintaan Oleh: ** {checking}\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%",
     )   
         return await mystic.delete()
          
@@ -546,7 +546,7 @@ async def startyuplay(_,CallbackQuery):
         await mystic.delete()
         m = await CallbackQuery.message.reply_photo(
         photo=thumb,
-        caption=f"👩‍💻 **Permintaan Oleh: ** {checking}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%",
+        caption=f"👩‍💻 **Permintaan Oleh: ** {checking}\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%",
         reply_markup=InlineKeyboardMarkup(buttons)
     )
         os.remove(thumb)
@@ -568,7 +568,7 @@ async def startyuplay(_,CallbackQuery):
         m = await CallbackQuery.message.reply_photo(
         photo=thumb,
         reply_markup=InlineKeyboardMarkup(buttons),    
-        caption=(f"👩‍💻 **Permintaan Oleh: ** {checking}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%")
+        caption=(f"👩‍💻 **Permintaan Oleh: ** {checking}\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%")
     )   
         os.remove(thumb)
         await CallbackQuery.message.delete()
