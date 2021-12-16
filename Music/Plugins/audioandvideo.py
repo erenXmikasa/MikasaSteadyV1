@@ -161,7 +161,7 @@ async def getspy(_,CallbackQuery):
                     a1,
                 ],
                 [
-                    InlineKeyboardButton(text="『⇐』 Go Back", callback_data=f'good {videoid}|{user_id}'),
+                    InlineKeyboardButton(text="⬅️ Go Back", callback_data=f'good {videoid}|{user_id}'),
                     InlineKeyboardButton(text="🗑 Close Menu", callback_data=f'close2')
                 ]    
             ]
@@ -174,7 +174,7 @@ async def getspy(_,CallbackQuery):
                     a2,
                 ],
                 [
-                    InlineKeyboardButton(text="『⇐』 Go Back", callback_data=f'good {videoid}|{user_id}'),
+                    InlineKeyboardButton(text="⬅️ Go Back", callback_data=f'good {videoid}|{user_id}'),
                     InlineKeyboardButton(text="🗑 Close Menu", callback_data=f'close2')
                 ]    
             ]
@@ -190,7 +190,7 @@ async def getspy(_,CallbackQuery):
                     a3,
                 ],
                 [
-                    InlineKeyboardButton(text="『⇐』 Go Back", callback_data=f'good {videoid}|{user_id}'),
+                    InlineKeyboardButton(text="⬅️ Go Back", callback_data=f'good {videoid}|{user_id}'),
                     InlineKeyboardButton(text="🗑 Close Menu", callback_data=f'close2')
                 ]    
             ]
@@ -207,7 +207,7 @@ async def getspy(_,CallbackQuery):
                     a4,
                 ],
                 [
-                    InlineKeyboardButton(text="『⇐』 Go Back", callback_data=f'good {videoid}|{user_id}'),
+                    InlineKeyboardButton(text="⬅️ Go Back", callback_data=f'good {videoid}|{user_id}'),
                     InlineKeyboardButton(text="🗑 Close Menu", callback_data=f'close2')
                 ]    
             ]
@@ -227,7 +227,7 @@ async def getspy(_,CallbackQuery):
                     a5,
                 ],
                 [
-                    InlineKeyboardButton(text="『⇐』 Go Back", callback_data=f'good {videoid}|{user_id}'),
+                    InlineKeyboardButton(text="⬅️ Go Back", callback_data=f'good {videoid}|{user_id}'),
                     InlineKeyboardButton(text="🗑 Close Menu", callback_data=f'close2')
                 ]    
             ]
@@ -248,7 +248,7 @@ async def getspy(_,CallbackQuery):
                     a6,
                 ],
                 [
-                    InlineKeyboardButton(text="『⇐』 Go Back", callback_data=f'good {videoid}|{user_id}'),
+                    InlineKeyboardButton(text="⬅️ Go Back", callback_data=f'good {videoid}|{user_id}'),
                     InlineKeyboardButton(text="🗑 Close Menu", callback_data=f'close2')
                 ]    
             ]
@@ -279,7 +279,7 @@ async def ytdata(_,CallbackQuery):
                     a2,
                 ],
                 [
-                    InlineKeyboardButton(text="『⇐』 Go Back", callback_data=f'good {videoid}|{user_id}'),
+                    InlineKeyboardButton(text="⬅️ Go Back", callback_data=f'good {videoid}|{user_id}'),
                     InlineKeyboardButton(text="🗑 Close Menu", callback_data=f'close2')
                 ]    
             ]
@@ -309,7 +309,7 @@ def inl_mark(videoid, user_id):
                 InlineKeyboardButton(text="Download or Upload Failed......", callback_data=f'down')
             ],
             [
-                InlineKeyboardButton(text="『⇐』 Go Back", callback_data=f'good {videoid}|{user_id}'),
+                InlineKeyboardButton(text="⬅️ Go Back", callback_data=f'good {videoid}|{user_id}'),
                 InlineKeyboardButton(text="🗑 Close Menu", callback_data=f'close2')
             ],
         ]
