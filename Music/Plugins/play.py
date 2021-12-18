@@ -4,6 +4,7 @@ from os import path
 import random
 import asyncio
 import shutil
+from Music import app, SUDOERS
 from pytube import YouTube
 from yt_dlp import YoutubeDL
 from Music import converter
@@ -661,8 +662,8 @@ async def play_playlist_cmd(_, message):
 
 #playmusic
 
-@app.on_message(command(["playmusic", f"playmusic@{BOT_USERNAME}"]) & other_filters)
-@sudo_users_only
+
+@app.on_message(filters.command("playmusic") & filters.user(SUDOERS))
 async def hfmm(c: Client, m: Message):
     global DISABLED_GROUPS
     try:
