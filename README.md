@@ -38,7 +38,7 @@
 
 + Sudo Users can execute any command in any groups
 
-# Yukki's music op
+# Yukki'Steady music op
 
 # DEPLOY
 
