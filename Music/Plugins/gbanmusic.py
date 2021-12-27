@@ -54,7 +54,7 @@ async def ban_globally(_, message):
                 except Exception:
                     pass    
             ban_text = f"""
-__**New Global Ban List On Vieena Music**__\n
+__**New Global Ban List On Steady Music**__\n
 **Origin:** {message.chat.title} [`{message.chat.id}`]
 **Sudo User:** {from_user.mention}
 **Banned User:** {user.mention}
@@ -99,7 +99,7 @@ __**New Global Ban List On Vieena Music**__\n
                 except Exception:
                     pass    
             ban_text = f"""
-__**New Global Ban List On Vieena Music**__\n
+__**New Global Ban List On Steady Music**__\n
 **Origin:** {message.chat.title} [`{message.chat.id}`]
 **Sudo User:** {from_user_mention}
 **Banned User:** {mention}
@@ -172,4 +172,4 @@ async def chat_watcher_func(_, message):
             await message.chat.kick_member(userid)
         except Exception:
             return       
-        await message.reply_text(f"{checking} is globally banned by Vieena Music and has been kicked out of the chat.\n\n**Possible Reason:** Potential Spammer and Abuser.")
+        await message.reply_text(f"{checking} is globally banned by Steady Music and has been kicked out of the chat.\n\n**Possible Reason:** Potential Spammer and Abuser.")
