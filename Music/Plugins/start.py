@@ -12,6 +12,7 @@ from Music import (
 )
 from Music.MusicUtilities.helpers.inline import start_keyboard, personal_markup
 from Music.MusicUtilities.helpers.thumbnails import down_thumb
+from Music.MusicUtilities.tgcallsrun.prime import user
 from Music.MusicUtilities.helpers.ytdl import ytdl_opts 
 from Music.MusicUtilities.helpers.filters import command
 from pyrogram.types import (
@@ -118,3 +119,28 @@ async def play(_, message: Message):
                 await message.reply_text("❌ No Sudo Users")  
             else:
                 await message.reply_text(text)
+
+#Join
+
+@Client.on_message(filters.new_chat_members)
+async def new_chat(c: Client, m: Message):
+    ass_uname = (await user.get_me()).username
+    bot_id = (await c.get_me()).id
+    for member in m.new_chat_members:
+        if member.id == bot_id:
+            return await m.reply(
+                "❤️ **Thanks for adding me to the Group !**\n\n"
+                "**Promote me as administrator of the Group, otherwise I will not be able to work properly, and don't forget to type /userbotjoin for invite the assistant.**\n\n"
+                "**Once done, type** /reload",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton("📣 Channel", url=f"https://t.me/vtbchannell"),
+                            InlineKeyboardButton("💭 Support", url=f"https://t.me/SteadySupportGroup")
+                        ],
+                        [
+                            InlineKeyboardButton("👤 Assistant", url=f"https://t.me/steadymusicbot")
+                        ]
+                    ]
+                )
+            )
