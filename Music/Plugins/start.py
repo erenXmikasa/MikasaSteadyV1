@@ -43,7 +43,7 @@ pstart_markup=InlineKeyboardMarkup(
         ) 
 
 
-@Client.on_message(filters.group & filters.command(["startt", "helpp"]))
+@Client.on_message(filters.group & filters.command(["start", "help"]))
 async def startt(_, message: Message):
     chat_id = message.chat.id
     await message.reply_text(
