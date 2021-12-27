@@ -128,9 +128,9 @@ async def new_chat(c: Client, m: Message):
     for member in m.new_chat_members:
         if member.id == bot_id:
             return await m.reply(
-                "❤️ **Thanks for adding me to the Group !**\n\n"
-                "**Promote me as administrator of the Group, otherwise I will not be able to work properly, and don't forget to type /userbotjoin for invite the assistant.**\n\n"
-                "**Once done, type** /reload",
+                "❤️ **Terima kasih telah menambahkan saya ke Grup!**\n\n"
+                "**Promosikan saya sebagai admin di Grup, jika tidak saya tidak akan dapat bekerja dengan baik, dan jangan lupa Tekan Tombol Asisstant untuk mengundang asisten.**\n\n"
+                "**Selamat Mendengarkan Music❤️",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -138,7 +138,7 @@ async def new_chat(c: Client, m: Message):
                             InlineKeyboardButton("💭 Support", url=f"https://t.me/SteadySupportGroup")
                         ],
                         [
-                            InlineKeyboardButton("👤 Assistant", url=f"https://t.me/steadymusicbot")
+                            InlineKeyboardButton("👤 Assistant", url=f"https://t.me/steadymusicbot?startgroup=true")
                         ]
                     ]
                 )
