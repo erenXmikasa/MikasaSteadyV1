@@ -50,7 +50,7 @@ async def startt(_, message: Message):
     await message.reply_text(
         f"""Hai {message.from_user.mention()}!
 
-Terima kasih telah menggunakan {BOT_NAME} Di {message.chat.title}.
+Terima kasih telah menggunakan Saya Di {message.chat.title}.
 Untuk bantuan atau bantuan apa pun, Silahkan Chat Owner Atau Join grup kami.""",
        reply_markup=pstart_markup,
        disable_web_page_preview=True
@@ -107,7 +107,7 @@ async def play(_, message: Message):
             )
         if str(finxx) == "sud":
             sudoers = await get_sudoers()
-            text = "**__Sudo Users List of Yui Music:-__**\n\n"
+            text = "**__Sudo Users List Steady Music:-__**\n\n"
             for count, user_id in enumerate(sudoers, 1):
                 try:                     
                     user = await app.get_users(user_id)
