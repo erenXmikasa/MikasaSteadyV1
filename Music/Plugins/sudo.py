@@ -25,7 +25,7 @@ async def useradd(_, message: Message):
             return await message.reply_text("✅ Sudah menjadi Pengguna Sudo.")
         added = await add_sudo(user.id)
         if added:
-            await message.reply_text(f"✅ Added **{user.mention}** sebagai Pengguna Super OwO")
+            await message.reply_text(f"✅ Ditambah **{user.mention}** sebagai Sudo")
             return os.execvp("python3", ["python3", "-m", "Music"])
         await edit_or_reply(message, text="❌ Terjadi kesalahan, periksa logs.")  
         return
@@ -37,7 +37,7 @@ async def useradd(_, message: Message):
         return await message.reply_text("✅ Sudah menjadi Pengguna Sudo.")
     added = await add_sudo(user_id)
     if added:
-        await message.reply_text(f"✅ Added **{mention}** sebagai Pengguna Super OwO")
+        await message.reply_text(f"✅ Ditambah **{mention}** sebagai Pengguna Super OwO")
         return os.execvp("python3", ["python3", "-m", "Music"])
     await edit_or_reply(message, text="❌ Terjadi kesalahan, periksa logs.")  
     return    
@@ -58,7 +58,7 @@ async def userdel(_, message: Message):
             return await message.reply_text(f"❌ Bukan bagian dari Steady Sudo.")        
         removed = await remove_sudo(user.id)
         if removed:
-            await message.reply_text(f"✅ Removed **{user.mention}** from Yukki's Sudo.")
+            await message.reply_text(f"✅ Dihapus **{user.mention}** dari Sudo.")
             return os.execvp("python3", ["python3", "-m", "Music"])
         await message.reply_text(f"❌ Sesuatu yang salah terjadi.")
         return
@@ -69,7 +69,7 @@ async def userdel(_, message: Message):
         return await message.reply_text(f"❌ Bukan bagian dari Steady Sudo.")        
     removed = await remove_sudo(user_id)
     if removed:
-        await message.reply_text(f"✅ Removed **{mention}** from Yukki's Sudo.")
+        await message.reply_text(f"✅ Dihapus **{mention}** dari Sudo.")
         return os.execvp("python3", ["python3", "-m", "Music"])
     await message.reply_text(f"❌ Sesuatu yang salah terjadi.")
                 
