@@ -44,7 +44,7 @@ pstart_markup=InlineKeyboardMarkup(
         ) 
 
 
-@Client.on_message(filters.group & filters.command(["start", "help"]))
+@Client.on_message(filters.group & filters.command(["start"]))
 async def startt(_, message: Message):
     chat_id = message.chat.id
     await message.reply_text(
@@ -56,6 +56,43 @@ Untuk bantuan atau bantuan apa pun, Silahkan Chat Owner Atau Join grup kami.""",
        disable_web_page_preview=True
     )
 
+@Client.on_message(filters.group & filters.command(["help"]))
+async def ghelp(_, message: Message):
+    await message.reply_text(
+        f"""🕵🏼‍♂️ Perintah dasar:
+» /play (nama lagu/tautan) - putar musik di obrolan suara
+» /videostream (kata kunci/tautan) - streaming yt live/radio video music
+» /videoplay (kata kunci/tautan video) - putar video di obrolan suara
+» /playlist - Menunjukan daftar putar
+» /video (kata kunci) - Unduh video
+» /song (kata kunci) - Unduh lagu
+» /lyric (kata kunci) - Mencari lirik lagu
+» /search (kata kunci) - Cari link video
+» /ping - tampilkan status ping robot
+» /info - tampilkan info robot aktif (dalam grup)
+
+👮🏼‍♂️ Perintah admin:
+» /pause - jeda streaming
+» /resume - lanjutkan streaming
+» /skip - beralih ke aliran berikutnya
+» /end - hentikan streaming
+» /mute - bisukan robot pengguna di obrolan suara
+» /unmute - mengaktifkan suara robot pengguna di obrolan suara
+» /volume 1-200 - mengatur volume musik (pengguna robot harus admin)
+» /reload - memuat ulang robot dan daftar admin
+» /userbotjoin - undang pengguna robot untuk bergabung dengan grup
+» /userbotleave - perintahkan pengguna robot keluar dari grup
+
+👷🏼‍♂️ Perintah sudo (asisten):
+» /rmw - Bersihkan semua file mentah
+» /rmd - Bersihkan semua file yang diunduh
+» /leaveall - Perintahkan pengguna robot keluar dari semua grup
+» /botplayer on/off - Perintahkan pengguna robot bisa memutar musik atau tidak
+» /usage - Melihat sisa dyno
+» /uptime - tampilkan status waktu aktif robot
+» /usage - tampilkan status waktu aktif robot
+» /cpu - tampilkan prosesor yang digunakan robot""",
+    )
     
 @Client.on_message(filters.private & filters.incoming & filters.command("start"))
 async def play(_, message: Message):
