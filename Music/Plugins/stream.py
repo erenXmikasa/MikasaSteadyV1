@@ -25,6 +25,14 @@ from Music.MusicUtilities.tgcallsrun.queues import (
     clear_queue,
     get_queue,
 )
+from Music.MusicUtilities.helpers.inline import (
+    play_keyboard,
+    search_markup,
+    play_markup,
+    playlist_markup,
+    audio_markup,
+    play_list_keyboard,
+)
 
 
 def ytsearch(query):
@@ -66,14 +74,31 @@ async def vplay(c: Client, message: Message):
     user_id = message.from_user.id
     user_name = message.from_user.first_name
     rpk = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
-    keyboard = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton("Group", url=f"https://t.me/{GROUP}"),
-                InlineKeyboardButton("Channel", url=f"https://t.me/{CHANNEL}"),
-            ]
-        ]
-    )
+    results = VideosSearch(query, limit=1)
+    for result in results.result()["result"]:
+                title = (result["title"])
+                duration = (result["duration"])
+                views = (result["viewCount"]["short"])  
+                thumbnail = (result["thumbnails"][0]["url"])
+                link = (result["link"])
+                idxz = (result["id"])
+                videoid = (result["id"])
+                
+#     keyboard = InlineKeyboardMarkup(
+#         [
+#             [
+#                 InlineKeyboardButton(text="▷", callback_data=f'resumevc'),
+#                 InlineKeyboardButton(text="II", callback_data=f'pausevc'),
+#                 InlineKeyboardButton(text="‣‣I", callback_data=f'skipvc'),
+#                 InlineKeyboardButton(text="▢", callback_data=f'stopvc')
+#             ],
+#             [
+#                 InlineKeyboardButton(text="Owner", url="https://t.me/vckyclone"),
+#                 InlineKeyboardButton(text="⚙ Menu", callback_data=f'other {videoid}|{user_id}'),
+#             ],
+#         ]
+#     )
+    userid = message.from_user.id
     if message.sender_chat:
         return await message.reply_text(
             "Anda adalah **Admin Anonim!**\n\n» kembali ke akun pengguna dari hak admin."
@@ -216,6 +241,7 @@ async def vplay(c: Client, message: Message):
                 add_to_queue(chat_id, songname, dl, link, "Video", Q)
                 await loser.delete()
                 requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
+                buttons = play_markup(videoid, user_id)
                 await app.send_message(
                     chat_id,
                     f"""
@@ -225,7 +251,7 @@ async def vplay(c: Client, message: Message):
 💬 **Diputar di:** {message.chat.title}
 """,
                     disable_web_page_preview=True,
-                    reply_markup=keyboard,
+                    reply_markup=InlineKeyboardMarkup(buttons),
                 )
 
     else:
