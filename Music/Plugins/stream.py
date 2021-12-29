@@ -78,10 +78,10 @@ async def vplay(c: Client, message: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton(text="▷", callback_data=f'resumevc'),
-                InlineKeyboardButton(text="II", callback_data=f'pausevc'),
+                InlineKeyboardButton(text="▷", callback_data=f'cbresume'),
+                InlineKeyboardButton(text="II", callback_data=f'cbpause'),
                 InlineKeyboardButton(text="‣‣I", callback_data=f'skipvc'),
-                InlineKeyboardButton(text="▢", callback_data=f'stopvc')
+                InlineKeyboardButton(text="▢", callback_data=f'cbstop')
             ],
             [
                 InlineKeyboardButton(text="Tutup", callback_data="close")
