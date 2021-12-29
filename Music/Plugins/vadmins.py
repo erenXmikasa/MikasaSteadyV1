@@ -40,15 +40,14 @@ async def cbmenu(_, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("▢", callback_data="cbstop"),
-                    InlineKeyboardButton("II", callback_data="cbpause"),
-                    InlineKeyboardButton("▷", callback_data="cbresume"),
+                    InlineKeyboardButton(text="▷", callback_data=f'cbresume'),
+                    InlineKeyboardButton(text="II", callback_data=f'cbpause'),
+                    InlineKeyboardButton(text="‣‣I", callback_data=f'skipvc'),
+                    InlineKeyboardButton(text="▢", callback_data=f'cbstop')
                 ],
                 [
-                    InlineKeyboardButton("🔇", callback_data="cbmute"),
-                    InlineKeyboardButton("🔊", callback_data="cbunmute"),
+                    InlineKeyboardButton(text="Tutup", callback_data="close")
                 ],
-                [InlineKeyboardButton("Tutup", callback_data="cls")],
             ]
         ),
     )
