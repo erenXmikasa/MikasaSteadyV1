@@ -22,14 +22,19 @@ from Music.MusicUtilities.tgcallsrun.queues import (
 )
 
 keyboard = InlineKeyboardMarkup(
-    [
-        [
-            InlineKeyboardButton("Group", url=f"https://t.me/{GROUP}"),
-            InlineKeyboardButton("Channel", url=f"https://t.me/{CHANNEL}"),
-        ]
-    ]
-)
-
+            [
+                [
+                    InlineKeyboardButton("▢", callback_data="cbstop"),
+                    InlineKeyboardButton("II", callback_data="cbpause"),
+                    InlineKeyboardButton("▷", callback_data="cbresume"),
+                ],
+                [
+                    InlineKeyboardButton("🔇", callback_data="cbmute"),
+                    InlineKeyboardButton("🔊", callback_data="cbunmute"),
+                ],
+                [InlineKeyboardButton("Tutup", callback_data="cls")],
+            ]
+        )
 
 async def skip_current_song(chat_id):
     if chat_id in QUEUE:
