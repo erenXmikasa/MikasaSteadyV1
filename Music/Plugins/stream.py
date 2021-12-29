@@ -232,7 +232,6 @@ async def vplay(c: Client, message: Message):
                 add_to_queue(chat_id, songname, dl, link, "Video", Q)
                 await loser.delete()
                 requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                buttons = play_markup(videoid, user_id)
                 await app.send_message(
                     chat_id,
                     f"""
@@ -242,7 +241,7 @@ async def vplay(c: Client, message: Message):
 💬 **Diputar di:** {message.chat.title}
 """,
                     disable_web_page_preview=True,
-                    reply_markup=InlineKeyboardMarkup(buttons),
+                    reply_markup=keyboard,
                 )
 
     else:
