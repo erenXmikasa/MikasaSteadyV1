@@ -48,7 +48,7 @@ pstart_markup=InlineKeyboardMarkup(
 async def startt(_, message: Message):
     chat_id = message.chat.id
     await message.reply_text(
-        f"""Hai {message.from_user.mention()}!
+        f"""❂Hai {message.from_user.mention()}!
 
 Terima kasih telah menggunakan Saya Di {message.chat.title}.
 Untuk bantuan atau bantuan apa pun, Silahkan Chat Owner Atau Join grup kami.""",
@@ -101,7 +101,7 @@ async def play(_, message: Message):
         user_name = message.from_user.first_name
         rpk = "["+user_name+"](tg://user?id="+str(user_id)+")" 
         await app.send_message(message.chat.id,
-            text=f"Hai. {rpk}!\n\n [❂](https://telegra.ph/file/add31c6018ba67309bd3b.jpg)Saya Dapat memutar musik di Obrolan Suara Telegram.",
+            text=f"❂Hai. {rpk}!\n\n[❂](https://telegra.ph/file/add31c6018ba67309bd3b.jpg)Saya Dapat memutar musik di Obrolan Suara Telegram.",
             parse_mode="markdown",
             reply_markup=pstart_markup
         )
