@@ -18,22 +18,6 @@ loop = asyncio.get_event_loop()
 
 
 
-@app.on_callback_query(filters.regex("pr_go_back_timer"))
-async def pr_go_back_timer(_, CallbackQuery):
-    await CallbackQuery.answer()
-    callback_data = CallbackQuery.data.strip()
-    callback_request = callback_data.split(None, 1)[1]
-    videoid, user_id = callback_request.split("|")
-    if await is_active_chat(CallbackQuery.message.chat.id):
-        if db_mem[CallbackQuery.message.chat.id]["videoid"] == videoid:
-            dur_left = db_mem[CallbackQuery.message.chat.id]["left"]
-            duration_min = db_mem[CallbackQuery.message.chat.id]["total"]
-            buttons = primary_markup(videoid, user_id, dur_left, duration_min)
-            await CallbackQuery.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(buttons))
-             
-    
-    
-
 @app.on_callback_query(filters.regex("timer_checkup_markup"))
 async def timer_checkup_markup(_, CallbackQuery):
     callback_data = CallbackQuery.data.strip()
