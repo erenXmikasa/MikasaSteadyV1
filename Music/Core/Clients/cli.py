@@ -1,4 +1,4 @@
-from Music.config import API_HASH, API_ID, BOT_TOKEN, STRING
+from Music.config import API_HASH, API_ID, BOT_TOKEN, SESSION_NAME
 from pyrogram import Client
 
 app = Client(
@@ -8,4 +8,4 @@ app = Client(
     bot_token=BOT_TOKEN,
 )
 
-userbot = Client(STRING, API_ID, API_HASH)
+userbot = Client(SESSION_NAME, API_ID, API_HASH)
