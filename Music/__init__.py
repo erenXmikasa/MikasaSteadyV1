@@ -93,6 +93,10 @@ def init_db():
 
 init_db()
 
+### Clients
+app = app
+userbot = userbot
+aiohttpsession = ClientSession()
 
 print("[INFO]: STARTING BOT CLIENT")
 app.start()
