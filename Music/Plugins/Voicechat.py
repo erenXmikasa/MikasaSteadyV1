@@ -48,6 +48,7 @@ async def activevc(_, message: Message):
         if not got_queue:
             await mystic.edit(f"Nothing in Queue")
         fetched = []
+        for get in got_queue:
             fetched.append(get)
 
         ### Results
