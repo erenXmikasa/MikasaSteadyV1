@@ -87,10 +87,7 @@ def all_info(app, client):
     ASSUSERNAME = getme1.username
     ASSMENTION = getme1.mention
  
-print("[INFO]: TEST LOGS INITIALIZE INIT DB")
-
 def init_db():
-    print("[INFO]: TES DISINI JUGA")
     global db_mem
     db_mem = {}
 
