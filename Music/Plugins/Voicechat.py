@@ -47,9 +47,7 @@ async def activevc(_, message: Message):
         got_queue = get_queue.get(message.chat.id)
         if not got_queue:
             await mystic.edit(f"Nothing in Queue")
-        fetched = []
-        for get in got_queue:
-            fetched.append(get)
+
 
         ### Results
         current_playing = fetched[0][0]
