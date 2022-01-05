@@ -37,6 +37,11 @@ async def timer_checkup_markup(_, CallbackQuery):
             f"No Active Voice Chat", show_alert=True
         )
 
+@app.on_message(filters.command("test"))
+async def test(_, message: Message):
+    global get_queue
+    if await is_active_chat(message.chat.id):
+        test = await message.reply_text(f"{get_queue}")
 
 @app.on_message(filters.command("queue"))
 async def activevc(_, message: Message):
