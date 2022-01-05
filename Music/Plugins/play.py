@@ -123,7 +123,7 @@ from pyrogram.types import (
 )
 
 from Music import db_mem
-from config import get_queue
+from Music.config import get_queue
 from Music.Core.PyTgCalls import Queues
 
 flex = {}
