@@ -9,11 +9,10 @@ pytube
 wget
 python-dotenv
 search-engine-parser
-tgcrypto
+pycrypto
 youtube-search-python
 youtube-search
 speedtest-cli
-cryptography
 dnspython
 future
 googletrans
@@ -24,7 +23,7 @@ pykeyboard
 pyromod
 requests
 speedtest-cli
-uvloop
+uvloop==0.4.4
 yt-dlp==2021.11.10.1
 telegraph
 hachoir

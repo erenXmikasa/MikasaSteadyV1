@@ -122,6 +122,10 @@ from pyrogram.types import (
     Message,
 )
 
+from Music import db_mem
+from config import get_queue
+from Music.Core.PyTgCalls import Queues
+
 flex = {}
 chat_watcher_group = 3
 
@@ -434,12 +438,35 @@ async def play(_, message: Message):
         caption=f"👩‍💻 **Permintaan Oleh: ** {checking}\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  ╰┈➤** {cpu_len}%",
     )   
         return await mystic.delete()
-         
-    
-    
-    
+
 @Client.on_callback_query(filters.regex(pattern=r"Music"))
 async def startyuplay(_,CallbackQuery): 
+
+    global get_queue
+    if await is_active_chat(CallbackQuery.message.chat.id):
+        position = await Queues.put(CallbackQuery.message.chat.id, file=file)
+        _path_ = (
+            (str(file))
+            .replace("_", "", 1)
+            .replace("/", "", 1)
+            .replace(".", "", 1)
+        )
+        if file not in db_mem:
+            db_mem[file] = {}
+        cpl = f"cache/{_path_}final.png"
+        shutil.copyfile(thumb, cpl)
+        wtfbro = db_mem[file]
+        wtfbro["title"] = title
+        wtfbro["duration"] = duration_min
+        wtfbro["username"] = CallbackQuery.from_user.mention
+        wtfbro["videoid"] = videoid
+        got_queue = get_queue.get(CallbackQuery.message.chat.id)
+        title = title
+        user = CallbackQuery.from_user.first_name
+        duration = duration_min
+        to_append = [title, user, duration]
+        got_queue.append(to_append)
+
     cpu_len = psutil.cpu_percent(interval=0.5)
     ram = psutil.virtual_memory().percent
     
