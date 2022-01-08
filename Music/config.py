@@ -6,8 +6,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
  #VARS
-
-get_queue = {}
 SESSION_NAME = getenv('SESSION_NAME', 'session')
 BOT_TOKEN = getenv('BOT_TOKEN')
 API_ID = int(getenv('API_ID', "3122923"))
