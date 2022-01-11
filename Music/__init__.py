@@ -10,7 +10,6 @@ import importlib
 from pyrogram import Client as Bot
 from Music.config import API_ID, API_HASH, BOT_TOKEN, MONGO_DB_URI, SUDO_USERS, LOG_GROUP_ID, OWNER_ID
 from pyrogram import Client
-from Music.Core.Clients.cli import app, userbot
 from aiohttp import ClientSession
 from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 import time
@@ -87,10 +86,6 @@ def all_info(app, client):
     ASSUSERNAME = getme1.username
     ASSMENTION = getme1.mention
 
-### Clients
-app = app
-userbot = userbot
-aiohttpsession = ClientSession()
 
 print("[INFO]: STARTING BOT CLIENT")
 app.start()
