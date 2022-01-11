@@ -44,7 +44,7 @@ pstart_markup=InlineKeyboardMarkup(
         ) 
 
 
-@Client.on_message(filters.group & filters.command(["start"]))
+@Client.on_message(filters.group & filters.command(["musicstart"]))
 async def startt(_, message: Message):
     chat_id = message.chat.id
     await message.reply_text(
@@ -56,7 +56,7 @@ Untuk bantuan atau bantuan apa pun, Silahkan Chat Owner Atau Join grup kami.""",
        disable_web_page_preview=True
     )
 
-@Client.on_message(filters.group & filters.command(["help"]))
+@Client.on_message(filters.group & filters.command(["musichelp"]))
 async def ghelp(_, message: Message):
     await message.reply_text(
         f"""🕵🏼‍♂️ Perintah dasar:
