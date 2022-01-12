@@ -45,7 +45,7 @@ pstart_markup=InlineKeyboardMarkup(
 
 
 @Client.on_message(filters.group & filters.command(["musicstart"]))
-async def startt(_, message: Message):
+async def musicstart(_, message: Message):
     chat_id = message.chat.id
     await message.reply_text(
         f"""❂Hai {message.from_user.mention()}!
@@ -94,7 +94,7 @@ async def ghelp(_, message: Message):
 » /cpu - tampilkan prosesor yang digunakan robot""",
     )
     
-@Client.on_message(filters.private & filters.incoming & filters.command("start"))
+@Client.on_message(filters.private & filters.incoming & filters.command("musicstart"))
 async def play(_, message: Message):
     if len(message.command) == 1:
         user_id = message.from_user.id
