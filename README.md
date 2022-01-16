@@ -9,7 +9,7 @@
 - FFmpeg (Latest)
 - NodeJS [nodesource.com](https://nodesource.com/) (NodeJS 17+)
 - Python (3.10+)
-- [PyTgCalls](https://github.com/pytgcalls/pytgcalls) (0.8.1rc1)
+- [PyTgCalls](https://github.com/pytgcalls/pytgcalls) (0.8.4)
 - [MongoDB](https://cloud.mongodb.com/) (3.12.1)
 - [2nd Telegram Account](https://telegram.org/blog/themes-accounts#multiple-accounts) (needed for userbot)
 
