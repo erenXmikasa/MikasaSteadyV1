@@ -28,6 +28,7 @@ from Music.MusicUtilities.tgcallsrun.queues import (
 from Music.MusicUtilities.helpers.inline import (
     play_keyboard,
     search_markup,
+    search_markup2,
     play_markup,
     playlist_markup,
     audio_markup,
@@ -43,6 +44,10 @@ def ytsearch(query):
         url = data["link"]
         duration = data["duration"]
         thumbnail = f"https://i.ytimg.com/vi/{data['id']}/hqdefault.jpg"
+        await mystic.edit( 
+            f"**List Of Result**\n\n1️⃣ <b>{title1}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n 2️⃣ <b>{title2}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n3️⃣ <b>{title3}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n4️⃣ <b>{title4}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n5️⃣ <b>{title5}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\nPowered by 𝙎𝙩𝙚𝙖𝙙𝙮 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩",    
+            reply_markup=InlineKeyboardMarkup(buttons),
+            disable_web_page_preview=True
         return [songname, url, duration, thumbnail]
     except Exception as e:
         print(e)
@@ -263,6 +268,11 @@ async def vplay(c: Client, message: Message):
                 url = search[1]
                 duration = search[2]
                 thumbnail = search[3]
+                buttons = search_markup(ID1, ID2, ID3, ID4, ID5, duration1, duration2, duration3, duration4, duration5, user_id, query)
+        await mystic.edit( 
+            f"**List Of Result**\n\n1️⃣ <b>{title1}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n 2️⃣ <b>{title2}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n3️⃣ <b>{title3}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n4️⃣ <b>{title4}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n5️⃣ <b>{title5}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\nPowered by 𝙎𝙩𝙚𝙖𝙙𝙮 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩",    
+            reply_markup=InlineKeyboardMarkup(buttons),
+            disable_web_page_preview=True
                 veez, ytlink = await ytdl(url)
                 if veez == 0:
                     await loser.edit(f"❌ yt-dl masalah terdeteksi\n\n» `{ytlink}`")
@@ -336,3 +346,62 @@ async def playlist(client, m: Message):
             await m.reply(QUE, disable_web_page_preview=True)
     else:
         await m.reply("**❌ Tidak memutar apapun**")
+
+#Testt
+
+@Client.on_callback_query(filters.regex(pattern=r"popat"))
+async def popat(_,CallbackQuery): 
+    callback_data = CallbackQuery.data.strip()
+    callback_request = callback_data.split(None, 1)[1]
+    print(callback_request)
+    userid = CallbackQuery.from_user.id 
+    try:
+        id , query, user_id = callback_request.split("|") 
+    except Exception as e:
+        return await CallbackQuery.message.edit(f"❌ Error Occured\n**Possible reason could be**:{e}")       
+    if CallbackQuery.from_user.id != int(user_id):
+        return await CallbackQuery.answer("❌ This is not for you! Search You Own Song", show_alert=True)
+    i=int(id)
+    query = str(query)
+    try:
+        a = VideosSearch(query, limit=10)
+        result = (a.result()).get("result")
+        title1 = (result[0]["title"])
+        duration1 = (result[0]["duration"])
+        title2 = (result[1]["title"])
+        duration2 = (result[1]["duration"])      
+        title3 = (result[2]["title"])
+        duration3 = (result[2]["duration"])
+        title4 = (result[3]["title"])
+        duration4 = (result[3]["duration"])
+        title5 = (result[4]["title"])
+        duration5 = (result[4]["duration"])
+        title6 = (result[5]["title"])
+        duration6 = (result[5]["duration"])
+        title7= (result[6]["title"])
+        duration7 = (result[6]["duration"])      
+        title8 = (result[7]["title"])
+        duration8 = (result[7]["duration"])
+        title9 = (result[8]["title"])
+        duration9 = (result[8]["duration"])
+        title10 = (result[9]["title"])
+        duration10 = (result[9]["duration"])
+        ID1 = (result[0]["id"])
+        ID2 = (result[1]["id"])
+        ID3 = (result[2]["id"])
+        ID4 = (result[3]["id"])
+        ID5 = (result[4]["id"])
+        ID6 = (result[5]["id"])
+        ID7 = (result[6]["id"])
+        ID8 = (result[7]["id"])
+        ID9 = (result[8]["id"])
+        ID10 = (result[9]["id"])                    
+    except Exception as e:
+        return await mystic.edit_text(f"❌ Soung Not Found.\n**Possible Reason:**{e}")
+    if i == 1:
+        buttons = search_markup2(ID6, ID7, ID8, ID9, ID10, duration6, duration7, duration8, duration9, duration10 ,user_id, query)
+        await CallbackQuery.edit_message_text(
+            f"6️⃣ <b>{title6}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n7️⃣ <b>{title7}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n8️⃣ <b>{title8}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n9️⃣ <b>{title9}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n🔟 <b>{title10}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n Powered by 𝙎𝙩𝙚𝙖𝙙𝙮 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩",    
+            reply_markup=InlineKeyboardMarkup(buttons),
+            disable_web_page_preview=True
+        )  
