@@ -38,7 +38,7 @@ from Music.MusicUtilities.helpers.inline import (
 
 def ytsearch(query):
     try:
-        search = VideosSearch(query, limit=5).result()
+        search = VideosSearch(query, limit=1).result()
         data = search["result"][0]
         songname = data["title"]
         url = data["link"]
