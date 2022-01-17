@@ -319,6 +319,12 @@ async def vplay(c: Client, message: Message):
 🎧 **Atas permintaan:** {requester}
 💬 **Diputar di:** {message.chat.title}
 """,
+                                disable_web_page_preview=True,
+                                reply_markup=keyboard,
+                            )
+                        except Exception as ep:
+                            await loser.delete()
+                            await message.reply_text(f"Error: `{ep}`")
 
 @Client.on_callback_query(filters.regex(pattern=r"popat"))
 async def popat(_,CallbackQuery): 
