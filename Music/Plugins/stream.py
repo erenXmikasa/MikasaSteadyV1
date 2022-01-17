@@ -281,20 +281,43 @@ async def vplay(c: Client, message: Message):
             f"**✨ Silahkan pilih lagu yang ingin anda putar**\n\n¹ <b>{title1[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID1})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n² <b>{title2[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID2})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n³ <b>{title3[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID3})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n⁴ <b>{title4[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID4})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n⁵ <b>{title5[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID5})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__",    
             reply_markup=InlineKeyboardMarkup(buttons),
             disable_web_page_preview=True
+        )  
+        return
+    if await is_active_chat(chat_id):
+        position = await put(chat_id, file=file)
+        _chat_ = (str(file)).replace("_", "", 1).replace("/", "", 1).replace(".", "", 1)
+        cpl = f"downloads/{_chat_}final.png"
+        shutil.copyfile(thumb, cpl)
+        f20 = open(f"search/{_chat_}title.txt", "w")
+        f20.write(f"{title}")
+        f20.close()
+        f111 = open(f"search/{_chat_}duration.txt", "w")
+        f111.write(f"{duration}")
+        f111.close()
+        f27 = open(f"search/{_chat_}username.txt", "w")
+        f27.write(f"{checking}")
+        f27.close()
+        if fucksemx != 1:
+            f28 = open(f"search/{_chat_}videoid.txt", "w")
+            f28.write(f"{videoid}")
+            f28.close()
+            buttons = play_markup(videoid, user_id)
+        else:
+            f28 = open(f"search/{_chat_}videoid.txt", "w")
+            f28.write(f"{videoid}")
+            f28.close()
+            buttons = audio_markup(videoid, user_id)
+        checking = (
+            f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
         )
-            else:
-                    if chat_id in QUEUE:
-                        pos = add_to_queue(chat_id, songname, ytlink, url, "Video", Q)
-                        await loser.delete()
-                        requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                        await app.send_message(
-                                chat_id,
-                                f"""
-💡 **Trek ditambahkan ke antrian**
+        await message.reply_photo(
+            photo=thumb,
+            caption=f"""
+▷ **Memutar video dimulai**
 🏷 **Nama:** [{songname[:999]}]({url})
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
-#️⃣ **Posisi antrian** {pos}
+💬 **Diputar di:** {message.chat.title}
 """,
                             disable_web_page_preview=True,
                             reply_markup=keyboard,
