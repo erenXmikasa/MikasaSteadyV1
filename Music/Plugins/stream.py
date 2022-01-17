@@ -288,6 +288,27 @@ async def vplay(c: Client, message: Message):
             loser = await message.reply("🔎 **Pencarian**")
             query = message.text.split(None, 1)[1]
             search = ytsearch(query)
+        try:
+            a = VideosSearch(query, limit=5)
+            result = (a.result()).get("result")
+            title1 = result[0]["title"]
+            duration1 = result[0]["duration"]
+            title2 = result[1]["title"]
+            duration2 = result[1]["duration"]
+            title3 = result[2]["title"]
+            duration3 = result[2]["duration"]
+            title4 = result[3]["title"]
+            duration4 = result[3]["duration"]
+            title5 = result[4]["title"]
+            duration5 = result[4]["duration"]
+            ID1 = result[0]["id"]
+            ID2 = result[1]["id"]
+            ID3 = result[2]["id"]
+            ID4 = result[3]["id"]
+            ID5 = result[4]["id"]
+        except Exception as e:
+            return await mystic.edit_text(
+                f"Lagu Tidak Ditemukan.\n**Kemungkinan Alasan:** {e}"
             Q = 480
             amaze = HighQualityVideo()
             if search == 0:
