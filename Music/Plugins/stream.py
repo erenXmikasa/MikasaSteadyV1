@@ -322,9 +322,8 @@ async def vplay(c: Client, message: Message):
                                 disable_web_page_preview=True,
                                 reply_markup=keyboard,
                             )
-                        except Exception as ep:
-                            await loser.delete()
-                            await message.reply_text(f"error:\n\n{e}")
+    except Exception as e:
+        return await message.reply_text(f"error:\n\n{e}")
 
 @Client.on_callback_query(filters.regex(pattern=r"popat"))
 async def popat(_,CallbackQuery): 
