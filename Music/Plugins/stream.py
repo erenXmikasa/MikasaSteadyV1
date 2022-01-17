@@ -318,39 +318,7 @@ async def vplay(c: Client, message: Message):
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
 💬 **Diputar di:** {message.chat.title}
-""",
-                            disable_web_page_preview=True,
-                            reply_markup=keyboard,
-                        )
-                    else:
-                        try:
-                            await call_py.join_group_call(
-                                chat_id,
-                                AudioVideoPiped(
-                                    ytlink,
-                                    HighQualityAudio(),
-                                    amaze,
-                                ),
-                                stream_type=StreamType().pulse_stream,
-                            )
-                            add_to_queue(chat_id, songname, ytlink, url, "Video", Q)
-                            await loser.delete()
-                            requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                            await app.send_message(
-                                chat_id,
-                                f"""
-▷ **Memutar video dimulai**
-🏷 **Nama:** [{songname[:999]}]({url})
-⏱️ **Durasi:** {duration}
-🎧 **Atas permintaan:** {requester}
-💬 **Diputar di:** {message.chat.title}
-""",
-                                disable_web_page_preview=True,
-                                reply_markup=keyboard,
-                            )
-                        except Exception as ep:
-                            await loser.delete()
-                            await message.reply_text(f"Error: `{ep}`")
+"""
 
 @app.on_message(command("videoplaylist") & filters.group)
 async def playlist(client, m: Message):
