@@ -38,7 +38,7 @@ from Music.MusicUtilities.helpers.inline import (
 
 def ytsearch(query):
     try:
-        search = VideosSearch(query, limit=1).result()
+        search = VideosSearch(query, limit=5).result()
         data = search["result"][0]
         songname = data["title"]
         url = data["link"]
@@ -191,7 +191,7 @@ async def vplay(c: Client, message: Message):
             ID4 = result[3]["id"]
             ID5 = result[4]["id"]
         except Exception as e:
-            return await mystic.edit_text(
+            await message.reply_text(
                 f"Lagu Tidak Ditemukan.\n**Kemungkinan Alasan:** {e}"
                )
         thumb ="cache/IMG_20211105_143948_192.jpg"
