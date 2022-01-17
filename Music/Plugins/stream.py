@@ -321,6 +321,8 @@ async def vplay(c: Client, message: Message):
 """,
                                 disable_web_page_preview=True,
                                 reply_markup=keyboard,
+                            )
+
 
 @Client.on_callback_query(filters.regex(pattern=r"popat"))
 async def popat(_,CallbackQuery): 
