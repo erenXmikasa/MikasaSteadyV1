@@ -318,7 +318,8 @@ async def vplay(c: Client, message: Message):
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
 💬 **Diputar di:** {message.chat.title}
-"""
+""",
+
 @Client.on_callback_query(filters.regex(pattern=r"popat"))
 async def popat(_,CallbackQuery): 
     callback_data = CallbackQuery.data.strip()
