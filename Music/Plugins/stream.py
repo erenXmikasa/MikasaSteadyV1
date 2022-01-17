@@ -320,7 +320,7 @@ async def vplay(c: Client, message: Message):
 💬 **Diputar di:** {message.chat.title}
 """
 
-@app.on_message(command("videoplaylist") & filters.group)
+@app.on_message(command("playlist") & filters.group)
 async def playlist(client, m: Message):
     chat_id = m.chat.id
     if chat_id in QUEUE:
