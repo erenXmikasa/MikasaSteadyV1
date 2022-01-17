@@ -282,7 +282,7 @@ async def vplay(c: Client, message: Message):
             reply_markup=InlineKeyboardMarkup(buttons),
             disable_web_page_preview=True
         )
-                else:
+            else:
                     if chat_id in QUEUE:
                         pos = add_to_queue(chat_id, songname, ytlink, url, "Video", Q)
                         await loser.delete()
