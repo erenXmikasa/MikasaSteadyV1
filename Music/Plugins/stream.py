@@ -44,10 +44,6 @@ def ytsearch(query):
         url = data["link"]
         duration = data["duration"]
         thumbnail = f"https://i.ytimg.com/vi/{data['id']}/hqdefault.jpg"
-        await mystic.edit( 
-            f"**List Of Result**\n\n1️⃣ <b>{title1}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n 2️⃣ <b>{title2}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n3️⃣ <b>{title3}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n4️⃣ <b>{title4}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n5️⃣ <b>{title5}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\nPowered by 𝙎𝙩𝙚𝙖𝙙𝙮 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩",    
-            reply_markup=InlineKeyboardMarkup(buttons),
-            disable_web_page_preview=True
         return [songname, url, duration, thumbnail]
     except Exception as e:
         print(e)
