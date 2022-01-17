@@ -248,7 +248,7 @@ async def vplay(c: Client, message: Message):
             await message.reply(
                 "» Balas ke **file video** atau **berikan sesuatu untuk ditelusuri.**"
             )
-        else:
+            return
         what = "Query Given"
         await LOG_CHAT(message, what)
         query = message.text.split(None, 1)[1]
