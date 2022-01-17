@@ -266,11 +266,11 @@ async def vplay(c: Client, message: Message):
             duration4 = result[3]["duration"]
             title5 = result[4]["title"]
             duration5 = result[4]["duration"]
-            ID1 = result[0]["id"]
-            ID2 = result[1]["id"]
-            ID3 = result[2]["id"]
-            ID4 = result[3]["id"]
-            ID5 = result[4]["id"]
+            ID1 = result[0]["Video"]
+            ID2 = result[1]["Video"]
+            ID3 = result[2]["Video"]
+            ID4 = result[3]["Video"]
+            ID5 = result[4]["Video"]
         except Exception as e:
             return await mystic.edit_text(
                 f"Lagu Tidak Ditemukan.\n**Kemungkinan Alasan:** {e}"
@@ -361,16 +361,16 @@ async def popat(_,CallbackQuery):
         duration9 = (result[8]["duration"])
         title10 = (result[9]["title"])
         duration10 = (result[9]["duration"])
-        ID1 = (result[0]["id"])
-        ID2 = (result[1]["id"])
-        ID3 = (result[2]["id"])
-        ID4 = (result[3]["id"])
-        ID5 = (result[4]["id"])
-        ID6 = (result[5]["id"])
-        ID7 = (result[6]["id"])
-        ID8 = (result[7]["id"])
-        ID9 = (result[8]["id"])
-        ID10 = (result[9]["id"])                    
+        ID1 = (result[0]["Video"])
+        ID2 = (result[1]["Video"])
+        ID3 = (result[2]["Video"])
+        ID4 = (result[3]["Video"])
+        ID5 = (result[4]["Video"])
+        ID6 = (result[5]["Video"])
+        ID7 = (result[6]["Video"])
+        ID8 = (result[7]["Video"])
+        ID9 = (result[8]["Video"])
+        ID10 = (result[9]["Video"])                    
     except Exception as e:
         return await mystic.edit_text(f"Lagu Tidak Ditemukan.\n**Kemungkinan Alasan:**{e}")
     if i == 1:
