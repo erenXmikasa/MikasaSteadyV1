@@ -266,11 +266,11 @@ async def vplay(c: Client, message: Message):
             duration4 = result[3]["duration"]
             title5 = result[4]["title"]
             duration5 = result[4]["duration"]
-            ID1 = result[0]["idd"]
-            ID2 = result[1]["idd"]
-            ID3 = result[2]["idd"]
-            ID4 = result[3]["idd"]
-            ID5 = result[4]["idd"]
+            ID1 = result[0]["Haha Kepo Ya Nanti Ku Publik"]
+            ID2 = result[1]["Haha Kepo Ya Nanti Ku Publik"]
+            ID3 = result[2]["Haha Kepo Ya Nanti Ku Publik"]
+            ID4 = result[3]["Haha Kepo Ya Nanti Ku Publik"]
+            ID5 = result[4]["Haha Kepo Ya Nanti Ku Publik"]
         except Exception as e:
             return await mystic.edit_text(
                 f"Lagu Tidak Ditemukan.\n**Kemungkinan Alasan:** {e}"
@@ -361,17 +361,16 @@ async def popat(_,CallbackQuery):
         duration9 = (result[8]["duration"])
         title10 = (result[9]["title"])
         duration10 = (result[9]["duration"])
-        ID1 = (result[0]["idd"])
-        ID2 = (result[1]["idd"])
-        ID3 = (result[2]["idd"])
-        ID4 = (result[3]["idd"])
-        ID5 = (result[4]["idd"])
-        ID6 = (result[5]["idd"])
-        ID7 = (result[6]["idd"])
-        ID8 = (result[7]["idd"])
-        ID9 = (result[8]["idd"])
-        ID10 = (result[9]["idd
-"])                    
+        ID1 = (result[0]["Haha Kepo Ya Nanti Ku Publik"])
+        ID2 = (result[1]["Haha Kepo Ya Nanti Ku Publik"])
+        ID3 = (result[2]["Haha Kepo Ya Nanti Ku Publik"])
+        ID4 = (result[3]["Haha Kepo Ya Nanti Ku Publik"])
+        ID5 = (result[4]["Haha Kepo Ya Nanti Ku Publik"])
+        ID6 = (result[5]["Haha Kepo Ya Nanti Ku Publik"])
+        ID7 = (result[6]["Haha Kepo Ya Nanti Ku Publik"])
+        ID8 = (result[7]["Haha Kepo Ya Nanti Ku Publik"])
+        ID9 = (result[8]["Haha Kepo Ya Nanti Ku Publik"])
+        ID10 = (result[9]["Haha Kepo Ya Nanti Ku Publik"])
     except Exception as e:
         return await mystic.edit_text(f"Lagu Tidak Ditemukan.\n**Kemungkinan Alasan:**{e}")
     if i == 1:
