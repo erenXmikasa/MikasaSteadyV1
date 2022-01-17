@@ -190,7 +190,7 @@ async def vplay(c: Client, message: Message):
             ID3 = result[2]["id"]
             ID4 = result[3]["id"]
             ID5 = result[4]["id"]
-        except Exception as e:
+    except Exception as e:
             await message.reply_text(
                 f"Lagu Tidak Ditemukan.\n**Kemungkinan Alasan:** {e}"
                )
