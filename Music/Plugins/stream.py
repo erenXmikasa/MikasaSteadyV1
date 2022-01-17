@@ -309,6 +309,7 @@ async def vplay(c: Client, message: Message):
         except Exception as e:
             return await mystic.edit_text(
                 f"Lagu Tidak Ditemukan.\n**Kemungkinan Alasan:** {e}"
+                        )
             Q = 480
             amaze = HighQualityVideo()
             if search == 0:
