@@ -266,6 +266,7 @@ async def vplay(c: Client, message: Message):
             reply_markup=InlineKeyboardMarkup(buttons),
                     disable_web_page_preview=True,
                     reply_markup=keyboard,
+                )
     else:
         if len(message.command) < 2:
             await message.reply(
