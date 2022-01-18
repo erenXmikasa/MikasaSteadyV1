@@ -226,36 +226,6 @@ async def vplay(c: Client, message: Message):
                     disable_web_page_preview=True,
                     reply_markup=keyboard,
                 )
-            else:
-                if Q == 720:
-                    amaze = HighQualityVideo()
-                elif Q == 480:
-                    amaze = MediumQualityVideo()
-                elif Q == 360:
-                    amaze = LowQualityVideo()
-                await call_py.join_group_call(
-                    chat_id,
-                    AudioVideoPiped(
-                        dl,
-                        HighQualityAudio(),
-                        amaze,
-                    ),
-                    stream_type=StreamType().pulse_stream,
-                )
-                add_to_queue(chat_id, songname, dl, link, "Video", Q)
-                await loser.delete()
-                requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                await app.send_message(
-                    chat_id,
-                    f"""
-▶️ **Streaming video dimulai**
-🏷 **Nama:** [{songname[:999]}]({link})
-🎧 **Atas permintaan:** {requester}
-💬 **Diputar di:** {message.chat.title}
-""",
-                    disable_web_page_preview=True,
-                    reply_markup=keyboard,
-                )
 
     else:
         if len(message.command) < 2:
@@ -295,6 +265,25 @@ async def vplay(c: Client, message: Message):
             f"**✨ Silahkan pilih lagu yang ingin anda putar**\n\n¹ <b>{title1[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID1})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n² <b>{title2[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID2})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n³ <b>{title3[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID3})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n⁴ <b>{title4[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID4})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n⁵ <b>{title5[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID5})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__",    
             reply_markup=InlineKeyboardMarkup(buttons),
             disable_web_page_preview=True
+        )
+                    disable_web_page_preview=True,
+                    reply_markup=keyboard,
+                )
+            else:
+                if Q == 720:
+                    amaze = HighQualityVideo()
+                elif Q == 480:
+                    amaze = MediumQualityVideo()
+                elif Q == 360:
+                    amaze = LowQualityVideo()
+                await call_py.join_group_call(
+                    chat_id,
+                    AudioVideoPiped(
+                        dl,
+                        HighQualityAudio(),
+                        amaze,
+                    ),
+                    stream_type=StreamType().pulse_stream,
         )  
         return
     if await is_active_chat(chat_id):
@@ -323,13 +312,15 @@ async def vplay(c: Client, message: Message):
             buttons = audio_markup(videoid, user_id)
         checking = (
             f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-        )
-        await message.reply_photo(
-            photo=thumb,
-            caption=f"""
-▷ **Memutar video dimulai**
-🏷 **Nama:** [{songname[:999]}]({url})
-⏱️ **Durasi:** {duration}
+                )
+                add_to_queue(chat_id, songname, dl, link, "Video", Q)
+                await loser.delete()
+                requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
+                await app.send_message(
+                    chat_id,
+                    f"""
+▶️ **Streaming video dimulai**
+🏷 **Nama:** [{songname[:999]}]({link})
 🎧 **Atas permintaan:** {requester}
 💬 **Diputar di:** {message.chat.title}
 """,
