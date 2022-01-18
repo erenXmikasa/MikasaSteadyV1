@@ -48,7 +48,6 @@ def get_yt_info_query_slider(query: str, query_type: int):
     else:
         duration_sec = int(time_to_seconds(duration_min))
     return title, duration_min, duration_sec, thumbnail, videoid
-)
 
 
 def ytsearch(query):
