@@ -268,7 +268,6 @@ async def vplay(c: Client, message: Message):
                     reply_markup=keyboard,
         )  
         return
-         
             else:
                 if Q == 720:
                     amaze = HighQualityVideo()
