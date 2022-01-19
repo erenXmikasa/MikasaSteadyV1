@@ -209,7 +209,6 @@ async def vplay(c: Client, message: Message):
 🎧 **Atas permintaan:** {requester}
 #️⃣ **Posisi antrian** {pos}
 """,
-                    disable_web_page_preview=True,
                     reply_markup=keyboard,
                 )
             else:
@@ -239,7 +238,6 @@ async def vplay(c: Client, message: Message):
 🎧 **Atas permintaan:** {requester}
 💬 **Diputar di:** {message.chat.title}
 """,
-                    disable_web_page_preview=True,
                     reply_markup=keyboard,
                 )
 
@@ -280,7 +278,6 @@ async def vplay(c: Client, message: Message):
 🎧 **Atas permintaan:** {requester}
 #️⃣ **Posisi antrian** {pos}
 """,
-                            disable_web_page_preview=True,
                             reply_markup=keyboard,
                         )
                     else:
@@ -306,7 +303,6 @@ async def vplay(c: Client, message: Message):
 🎧 **Atas permintaan:** {requester}
 💬 **Diputar di:** {message.chat.title}
 """,
-                                disable_web_page_preview=True,
                                 reply_markup=keyboard,
                             )
                         except Exception as ep:
