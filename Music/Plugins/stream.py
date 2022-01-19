@@ -625,7 +625,7 @@ async def startyuplayvideo(_,CallbackQuery):
         await mystic.delete()
         m = await CallbackQuery.message.reply_photo(
         photo=thumb,
-        caption=f"👩‍💻 **Permintaan Oleh: ** {checking}\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  ╰┈➤** {cpu_len}%",
+        caption=f"INI VIDEO \n👩‍💻 **Permintaan Oleh: ** {checking}\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  ╰┈➤** {cpu_len}%",
         reply_markup=InlineKeyboardMarkup(buttons)
     )
         os.remove(thumb)
@@ -647,7 +647,7 @@ async def startyuplayvideo(_,CallbackQuery):
         m = await CallbackQuery.message.reply_photo(
         photo=thumb,
         reply_markup=InlineKeyboardMarkup(buttons),    
-        caption=(f"👩‍💻 **Permintaan Oleh: ** {checking}\n💻 **RAM •┈➤** {ram}%\n💾 **CPU ╰┈➤** {cpu_len}%")
+        caption=(f"INI VIDEO \n👩‍💻 **Permintaan Oleh: ** {checking}\n💻 **RAM •┈➤** {ram}%\n💾 **CPU ╰┈➤** {cpu_len}%")
     )   
         os.remove(thumb)
         await CallbackQuery.message.delete()
