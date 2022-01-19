@@ -69,8 +69,8 @@ async def ytdl(link):
         return 0, stderr.decode()
     
 
-@Client.on_message(command(["vplay", f"vplay@{BOT_USERNAME}"]) & filters.group)
-async def vplay(c: Client, message: Message):
+@Client.on_message(command(["videoplay") & filters.group)
+async def videoplay(c: Client, message: Message):
     replied = message.reply_to_message
     chat_id = message.chat.id
     user_id = message.from_user.id
@@ -359,10 +359,8 @@ async def vplay(c: Client, message: Message):
         if len(message.command) < 2:
             await message.reply_text(
                 text=f"""
-**{rpk} Anda tidak memberikan judul.
-
-Coba berikan judul atau url untuk diputar!**
-» `/vplay duka`""",
+**{rpk} Anda tidak memberikan judul yang Benar.
+""",
             )
         else:
             what = "Command vplay"
