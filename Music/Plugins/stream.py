@@ -201,9 +201,9 @@ async def vplay(c: Client, message: Message):
                 pos = add_to_queue(chat_id, songname, dl, link, "Video", Q)
                 await loser.delete()
                 requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                await app.send_message(
-                    chat_id,
-                    f"""
+                await message.reply_photo(
+                    photo="cache/IMG_20211203_150634_304.jpg",
+                    caption=f"""
 💡 **Trek ditambahkan ke antrian**
 🏷 **Nama:** [{songname[:999]}]({link})
 🎧 **Atas permintaan:** {requester}
@@ -231,9 +231,9 @@ async def vplay(c: Client, message: Message):
                 add_to_queue(chat_id, songname, dl, link, "Video", Q)
                 await loser.delete()
                 requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                await app.send_message(
-                    chat_id,
-                    f"""
+                await message.reply_photo(
+                    photo="cache/IMG_20211203_150634_304.jpg",
+                    caption=f"""
 ▶️ **Streaming video dimulai**
 🏷 **Nama:** [{songname[:999]}]({link})
 🎧 **Atas permintaan:** {requester}
@@ -271,9 +271,9 @@ async def vplay(c: Client, message: Message):
                         pos = add_to_queue(chat_id, songname, ytlink, url, "Video", Q)
                         await loser.delete()
                         requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                        await app.send_message(
-                                chat_id,
-                                f"""
+                        await message.reply_photo(
+                            photo="cache/IMG_20211203_150634_304.jpg",
+                            caption=f"""
 💡 **Trek ditambahkan ke antrian**
 🏷 **Nama:** [{songname[:999]}]({url})
 ⏱️ **Durasi:** {duration}
@@ -297,9 +297,9 @@ async def vplay(c: Client, message: Message):
                             add_to_queue(chat_id, songname, ytlink, url, "Video", Q)
                             await loser.delete()
                             requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                            await app.send_message(
-                                chat_id,
-                                f"""
+                            await message.reply_photo(
+                                photo="cache/IMG_20211203_150634_304.jpg",
+                                caption=f"""
 ▷ **Memutar video dimulai**
 🏷 **Nama:** [{songname[:999]}]({url})
 ⏱️ **Durasi:** {duration}
