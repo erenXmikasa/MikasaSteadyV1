@@ -571,8 +571,9 @@ async def kontol(_, CallbackQuery):
                     stream_type=StreamType().pulse_stream,
                 )
                 add_to_queue(chat_id, songname, ytlink, url, "Video", Q)
-                await message.reply_photo(
-                    photo="cache/IMG_20211203_150634_304.jpg",
+                await app.send_photo(
+                    chat_id,
+                    photo="cache/IMG_20211203_150634_304.jpg",             
                     caption=f"""
 ▷ **Memutar video dimulai**
 🏷 **Judul:** [{songname[:999]}]({url})
