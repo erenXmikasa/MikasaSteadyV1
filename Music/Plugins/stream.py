@@ -214,7 +214,8 @@ async def videoplay(c: Client, message: Message):
                 pos = add_to_queue(chat_id, title, dl, link, "Video", Q)
                 await loser.delete()
                 requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                await message.reply_photo(
+                await app.send_photo(
+                    chat_id,
                     photo="cache/IMG_20211203_150634_304.jpg",
                     caption=f"""
 💡 **Trek ditambahkan ke antrian**
@@ -254,7 +255,8 @@ async def videoplay(c: Client, message: Message):
                 add_to_queue(chat_id, title, dl, link, "Video", Q)
                 await loser.delete()
                 requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                await message.reply_photo(
+                await app.send_photo(
+                    chat_id,
                     photo="cache/IMG_20211203_150634_304.jpg",
                     caption=f"""
 ▷ **Memutar video dimulai**
@@ -301,7 +303,8 @@ async def videoplay(c: Client, message: Message):
             if chat_id in QUEUE:
                 pos = add_to_queue(chat_id, title, ytlink, url, "Video", Q)
                 requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                await message.reply_photo(
+                await app.send_photo(
+                    chat_id,
                     photo="cache/IMG_20211203_150634_304.jpg",
                     caption=f"""
 💡 **Trek ditambahkan ke antrian**
@@ -333,7 +336,8 @@ async def videoplay(c: Client, message: Message):
                     add_to_queue(chat_id, title, ytlink, url, "Video", Q)
                     await kz.delete()
                     requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                    await message.reply_photo(
+                    await app.send_photo(
+                        chat_id,
                         photo="cache/IMG_20211203_150634_304.jpg",
                         caption=f"""
 ▷ **Memutar video dimulai**
@@ -437,7 +441,8 @@ async def videoplay(c: Client, message: Message):
                 pos = add_to_queue(chat_id, songname, ytlink, url, "Video", Q)
                 await loser.delete()
                 requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                await message.reply_photo(
+                await app.send_photo(
+                    chat_id,
                     photo="cache/IMG_20211203_150634_304.jpg",
                     caption=f"""
 💡 **Trek ditambahkan ke antrian**
@@ -469,7 +474,8 @@ async def videoplay(c: Client, message: Message):
                     add_to_queue(chat_id, title, ytlink, url, "Video", Q)
                     await loser.delete()
                     requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                    await message.reply_photo(
+                    await app.send_photo(
+                        chat_id,
                         photo="cache/IMG_20211203_150634_304.jpg",
                         caption=f"""
 ▷ **Memutar video dimulai**
@@ -539,8 +545,9 @@ async def kontol(_, CallbackQuery):
     else:
         if chat_id in QUEUE:
             pos = add_to_queue(chat_id, songname, ytlink, url, "Video", Q)
-                  await message.reply_photo(
-                      photo="cache/IMG_20211203_150634_304.jpg",
+                await app.send_photo(
+                    chat_id,
+                    photo="cache/IMG_20211203_150634_304.jpg",
                       caption=f"""
 💡 **Trek ditambahkan ke antrian**
 🏷 **Judul:** [{songname[:999]}]({url})
