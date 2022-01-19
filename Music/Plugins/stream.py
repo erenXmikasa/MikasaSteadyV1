@@ -1,6 +1,40 @@
 import asyncio
+import psutil
+import shutil
+from Music.config import DURATION_LIMIT, LOG_GROUP_ID
 import os
 from Music.MusicUtilities.tgcallsrun import ASS_ACC
+flex = {}
+from Music.MusicUtilities.tgcallsrun import (
+    music,
+    convert,
+    download,
+    clear,
+    get,
+    is_empty,
+    put,
+    task_done,
+    ASS_ACC,
+)
+from Music.MusicUtilities.database.queue import (
+    get_active_chats,
+    is_active_chat,
+    add_active_chat,
+    remove_active_chat,
+    music_on,
+    is_music_playing,
+    music_off,
+)
+import random
+from Music.MusicUtilities.helpers.gets import (
+    get_url,
+    themes,
+    random_assistant,
+    ass_det,
+)
+from Music.MusicUtilities.helpers.thumbnails import gen_thumb
+from Music.MusicUtilities.helpers.chattitle import CHAT_TITLE
+from pytgcalls.types.input_stream import InputAudioStream, InputStream
 
 from pyrogram import Client, filters
 from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant
@@ -27,14 +61,19 @@ from Music.MusicUtilities.tgcallsrun.queues import (
 )
 from Music.MusicUtilities.helpers.inline import (
     play_keyboard,
-    search_markup,
-    search_markup2,
+    search_markupvideo,
+    search_markupvideo2,
     play_markup,
     playlist_markup,
     audio_markup,
     play_list_keyboard,
 )
 
+def time_to_seconds(time):
+    stringt = str(time)
+    return sum(
+        int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":")))
+    )
 
 def get_yt_info_query_slider(query: str, query_type: int):
     a = VideosSearch(query, limit=10)
@@ -290,7 +329,7 @@ async def vplay(c: Client, message: Message):
                 f"Lagu Tidak Ditemukan.\n**Kemungkinan Alasan:** {e}"
             )
         thumb ="cache/IMG_20211105_143948_192.jpg"
-        buttons = search_markup(ID1, ID2, ID3, ID4, ID5, duration1, duration2, duration3, duration4, duration5, user_id, query)
+        buttons = search_markupvideo(ID1, ID2, ID3, ID4, ID5, duration1, duration2, duration3, duration4, duration5, user_id, query)
         await loser.edit( 
             f"**✨ Silahkan pilih lagu yang ingin anda putar**\n\n¹ <b>{title1[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID1})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n² <b>{title2[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID2})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n³ <b>{title3[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID3})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n⁴ <b>{title4[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID4})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n⁵ <b>{title5[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID5})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__",    
             reply_markup=InlineKeyboardMarkup(buttons),
@@ -388,7 +427,7 @@ async def popat(_,CallbackQuery):
     except Exception as e:
         return await mystic.edit_text(f"Lagu Tidak Ditemukan.\n**Kemungkinan Alasan:**{e}")
     if i == 1:
-        buttons = search_markup2(ID6, ID7, ID8, ID9, ID10, duration6, duration7, duration8, duration9, duration10 ,user_id, query)
+        buttons = search_markupvideo2(ID6, ID7, ID8, ID9, ID10, duration6, duration7, duration8, duration9, duration10 ,user_id, query)
         await CallbackQuery.edit_message_text(
             f"**✨ Silahkan pilih lagu yang ingin anda putar**\n\n⁶ <b>{title6[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID6})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n⁷ <b>{title7[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID7})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n⁸ <b>{title8[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID8})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n⁹ <b>{title9[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID9})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n¹⁰ <b>{title10[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID10})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__",    
             reply_markup=InlineKeyboardMarkup(buttons),
@@ -396,7 +435,7 @@ async def popat(_,CallbackQuery):
         )  
         return    
     if i == 2:
-        buttons = search_markup(ID1, ID2, ID3, ID4, ID5, duration1, duration2, duration3, duration4, duration5, user_id, query)
+        buttons = search_markupvideo(ID1, ID2, ID3, ID4, ID5, duration1, duration2, duration3, duration4, duration5, user_id, query)
         await CallbackQuery.edit_message_text(
             f"**✨ Silahkan pilih lagu yang ingin anda putar**\n\n¹ <b>{title1[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID1})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n² <b>{title2[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID2})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n³ <b>{title3[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID3})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n⁴ <b>{title4[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID4})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n⁵ <b>{title5[:27]}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID5})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__",    
             reply_markup=InlineKeyboardMarkup(buttons),
@@ -427,47 +466,188 @@ async def playlist(client, m: Message):
     else:
         await m.reply("**❌ Tidak memutar apapun**")
 
-@app.on_callback_query(filters.regex(pattern=r"VideoStream"))
-async def Videos_Stream(_, CallbackQuery):
-    if CallbackQuery.message.chat.id not in db_mem:
-        db_mem[CallbackQuery.message.chat.id] = {}
+# @app.on_callback_query(filters.regex(pattern=r"VideoStream"))
+# async def Videos_Stream(_, CallbackQuery):
+#     if CallbackQuery.message.chat.id not in db_mem:
+#         db_mem[CallbackQuery.message.chat.id] = {}
+#     callback_data = CallbackQuery.data.strip()
+#     callback_request = callback_data.split(None, 1)[1]
+#     chat_id = CallbackQuery.message.chat.id
+#     chat_title = CallbackQuery.message.chat.title
+#     quality, videoid, duration, user_id = callback_request.split("|")
+#     if CallbackQuery.from_user.id != int(user_id):
+#         return await CallbackQuery.answer(
+#             "This is not for you! Search You Own Song.", show_alert=True
+#         )
+#     if str(duration) == "None":
+#         buttons = livestream_markup(quality, videoid, duration, user_id)
+#         return await CallbackQuery.edit_message_text(
+#             "**Live Stream Detected**\n\nWant to play live stream? This will stop the current playing musics(if any) and will start streaming live video.",
+#             reply_markup=InlineKeyboardMarkup(buttons),
+#         )
+#     await CallbackQuery.message.delete()
+#     title, duration_min, duration_sec, thumbnail = get_yt_info_id(videoid)
+#     if duration_sec > DURATION_LIMIT:
+#         return await CallbackQuery.message.reply_text(
+#             f"**Duration Limit Exceeded**\n\n**Allowed Duration: **{DURATION_LIMIT_MIN} minute(s)\n**Received Duration:** {duration_min} minute(s)"
+#         )
+#     await CallbackQuery.answer(f"Processing:- {title[:20]}", show_alert=True)
+#     theme = await check_theme(chat_id)
+#     chat_title = await specialfont_to_normal(chat_title)
+#     thumb = await gen_thumb(thumbnail, title, user_id, theme, chat_title)
+#     nrs, ytlink = await get_m3u8(videoid)
+#     if nrs == 0:
+#         return await CallbackQuery.message.reply_text(
+#             "Video Formats not Found.."
+#         )
+#     await start_video_stream(
+#         CallbackQuery,
+#         quality,
+#         ytlink,
+#         thumb,
+#         title,
+#         duration_min,
+#         duration_sec,
+#         videoid,
+#     )
+    
+@Client.on_callback_query(filters.regex(pattern=r"MusicVideo"))
+async def startyuplayvideo(_,CallbackQuery): 
+
+    cpu_len = psutil.cpu_percent(interval=0.5)
+    ram = psutil.virtual_memory().percent
+    
     callback_data = CallbackQuery.data.strip()
-    callback_request = callback_data.split(None, 1)[1]
     chat_id = CallbackQuery.message.chat.id
     chat_title = CallbackQuery.message.chat.title
-    quality, videoid, duration, user_id = callback_request.split("|")
+    callback_request = callback_data.split(None, 1)[1]
+    userid = CallbackQuery.from_user.id 
+    try:
+        id,duration,user_id = callback_request.split("|") 
+    except Exception as e:
+        return await CallbackQuery.message.edit(f"❌ Error Occured\n**Possible reason could be**:{e}")
+    if duration == "None":
+        return await CallbackQuery.message.reply_text(f"❌ Sorry!, Live Videos are not supported")      
     if CallbackQuery.from_user.id != int(user_id):
-        return await CallbackQuery.answer(
-            "This is not for you! Search You Own Song.", show_alert=True
-        )
-    if str(duration) == "None":
-        buttons = livestream_markup(quality, videoid, duration, user_id)
-        return await CallbackQuery.edit_message_text(
-            "**Live Stream Detected**\n\nWant to play live stream? This will stop the current playing musics(if any) and will start streaming live video.",
-            reply_markup=InlineKeyboardMarkup(buttons),
-        )
+        return await CallbackQuery.answer("❌ This is not for you! Search You Own Song", show_alert=True)
     await CallbackQuery.message.delete()
-    title, duration_min, duration_sec, thumbnail = get_yt_info_id(videoid)
-    if duration_sec > DURATION_LIMIT:
-        return await CallbackQuery.message.reply_text(
-            f"**Duration Limit Exceeded**\n\n**Allowed Duration: **{DURATION_LIMIT_MIN} minute(s)\n**Received Duration:** {duration_min} minute(s)"
-        )
-    await CallbackQuery.answer(f"Processing:- {title[:20]}", show_alert=True)
-    theme = await check_theme(chat_id)
-    chat_title = await specialfont_to_normal(chat_title)
-    thumb = await gen_thumb(thumbnail, title, user_id, theme, chat_title)
-    nrs, ytlink = await get_m3u8(videoid)
-    if nrs == 0:
-        return await CallbackQuery.message.reply_text(
-            "Video Formats not Found.."
-        )
-    await start_video_stream(
-        CallbackQuery,
-        quality,
-        ytlink,
-        thumb,
-        title,
-        duration_min,
-        duration_sec,
-        videoid,
+    checking = f"[{CallbackQuery.from_user.first_name}](tg://user?id={userid})"
+    url = (f"https://www.youtube.com/watch?v={id}")
+    videoid = id
+    idx = id
+    smex = int(time_to_seconds(duration))
+    if smex > DURATION_LIMIT:
+        await CallbackQuery.message.reply_text(f"❌ **__Duration Error__**\n\n✅ **Allowed Duration: **90 minute(s)\n📲 **Received Duration:** {duration} minute(s)")
+        return 
+    try:
+        with yt_dlp.YoutubeDL(ytdl_opts) as ytdl:
+            x = ytdl.extract_info(url, download=False)
+    except Exception as e:
+        return await CallbackQuery.message.reply_text(f"❌ Failed to download this video.\n\n**Reason**:{e}") 
+    title = (x["title"])
+    await CallbackQuery.answer(f"Selected {title[:20]}.... \nProcessing...", show_alert=True)
+    mystic = await CallbackQuery.message.reply_text(f"Downloading {title[:50]}")
+    thumbnail = (x["thumbnail"])
+    idx = (x["id"])
+    videoid = (x["id"])
+    def my_hook(d): 
+        if d['status'] == 'downloading':
+            percentage = d['_percent_str']
+            per = (str(percentage)).replace(".","", 1).replace("%","", 1)
+            per = int(per)
+            eta = d['eta']
+            speed = d['_speed_str']
+            size = d['_total_bytes_str']
+            bytesx = d['total_bytes']
+            if str(bytesx) in flex:
+                pass
+            else:
+                flex[str(bytesx)] = 1
+            if flex[str(bytesx)] == 1:
+                flex[str(bytesx)] += 1
+                try:
+                    if eta > 2:
+                        mystic.edit(f"Downloading {title[:50]}\n\n**File Size:** {size}\n**Downloaded:** {percentage}\n**Speed:** {speed}\n**ETA:** {eta} sec")
+                except Exception as e:
+                    pass
+            if per > 250:    
+                if flex[str(bytesx)] == 2:
+                    flex[str(bytesx)] += 1
+                    if eta > 2:     
+                        mystic.edit(f"Downloading {title[:50]}..\n\n**File Size:** {size}\n**Downloaded:** {percentage}\n**Speed:** {speed}\n**ETA:** {eta} sec")
+                    print(f"[{videoid}] Downloaded {percentage} at a speed of {speed} | ETA: {eta} seconds")
+            if per > 500:    
+                if flex[str(bytesx)] == 3:
+                    flex[str(bytesx)] += 1
+                    if eta > 2:     
+                        mystic.edit(f"Downloading {title[:50]}...\n\n**File Size:** {size}\n**Downloaded:** {percentage}\n**Speed:** {speed}\n**ETA:** {eta} sec")
+                    print(f"[{videoid}] Downloaded {percentage} at a speed of {speed} | ETA: {eta} seconds")
+            if per > 800:    
+                if flex[str(bytesx)] == 4:
+                    flex[str(bytesx)] += 1
+                    if eta > 2:    
+                        mystic.edit(f"Downloading {title[:50]}....\n\n**File Size:** {size}\n**Downloaded:** {percentage}\n**Speed:** {speed}\n**ETA:** {eta} sec")
+                    print(f"[{videoid}] Downloaded {percentage} at a speed of {speed} | ETA: {eta} seconds")
+        if d['status'] == 'finished': 
+            try:
+                taken = d['_elapsed_str']
+            except Exception as e:
+                taken = "00:00"
+            size = d['_total_bytes_str']
+            mystic.edit(f"**Downloaded {title[:50]}.....**\n\n**File Size:** {size}\n**Time Taken:** {taken} sec\n\n**Converting File** [__FFmpeg processing__]")
+            print(f"[{videoid}] Downloaded| Elapsed: {taken} seconds")    
+    loop = asyncio.get_event_loop()
+    x = await loop.run_in_executor(None, download, url, my_hook)
+    file = await convert(x)
+    theme = random.choice(themes)
+    ctitle = CallbackQuery.message.chat.title
+    ctitle = await CHAT_TITLE(ctitle)
+    thumb = await gen_thumb(thumbnail, title, userid, theme, ctitle)
+    await mystic.delete()
+    if await is_active_chat(chat_id):
+        position = await put(chat_id, file=file)
+        buttons = play_markup(videoid, user_id)
+        _chat_ = ((str(file)).replace("_","", 1).replace("/","", 1).replace(".","", 1))
+        cpl=(f"downloads/{_chat_}final.png")     
+        shutil.copyfile(thumb, cpl) 
+        f20 = open(f'search/{_chat_}title.txt', 'w')
+        f20.write(f"{title}") 
+        f20.close()
+        f111 = open(f'search/{_chat_}duration.txt', 'w')
+        f111.write(f"{duration}") 
+        f111.close()
+        f27 = open(f'search/{_chat_}username.txt', 'w')
+        f27.write(f"{checking}") 
+        f27.close()
+        f28 = open(f'search/{_chat_}videoid.txt', 'w')
+        f28.write(f"{videoid}") 
+        f28.close()
+        await mystic.delete()
+        m = await CallbackQuery.message.reply_photo(
+        photo=thumb,
+        caption=f"👩‍💻 **Permintaan Oleh: ** {checking}\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  ╰┈➤** {cpu_len}%",
+        reply_markup=InlineKeyboardMarkup(buttons)
     )
+        os.remove(thumb)
+        await CallbackQuery.message.delete()       
+    else:
+        await music_on(chat_id)
+        await add_active_chat(chat_id)
+        await music.pytgcalls.join_group_call(
+            chat_id, 
+            InputStream(
+                InputAudioStream(
+                    file,
+                ),
+            ),
+            stream_type=StreamType().local_stream,
+        )
+        buttons = play_markup(videoid, user_id)
+        await mystic.delete()
+        m = await CallbackQuery.message.reply_photo(
+        photo=thumb,
+        reply_markup=InlineKeyboardMarkup(buttons),    
+        caption=(f"👩‍💻 **Permintaan Oleh: ** {checking}\n💻 **RAM •┈➤** {ram}%\n💾 **CPU ╰┈➤** {cpu_len}%")
+    )   
+        os.remove(thumb)
+        await CallbackQuery.message.delete()
