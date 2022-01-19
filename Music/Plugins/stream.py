@@ -79,9 +79,14 @@ async def vplay(c: Client, message: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{GROUP}"),
-                InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/{CHANNEL}"),
-            ]
+                InlineKeyboardButton(text="▶️", callback_data=f'cbresume'),
+                InlineKeyboardButton(text="⏸️", callback_data=f'cbpause'),
+                InlineKeyboardButton(text="⏭️", callback_data=f'skipvc'),
+                InlineKeyboardButton(text="⏹️", callback_data=f'cbstop')
+            ],
+            [
+                InlineKeyboardButton(text="Tutup", callback_data="close")
+            ],
         ]
     )
     if message.sender_chat:
@@ -377,11 +382,11 @@ Coba berikan judul atau url untuk diputar!**
                 j = 0
 
                 emojilist = [
-                    "¹",
-                    "²",
-                    "³",
-                    "⁴",
-                    "⁵",
+                    "1️⃣",
+                    "2️⃣",
+                    "3️⃣",
+                    "4️⃣",
+                    "5️⃣",
                 ]
                 while j < 5:
                     toxxt += f"{emojilist[j]} **[{data[j]['title'][:25]}...]({data[j]['link']})**\n"
@@ -393,24 +398,24 @@ Coba berikan judul atau url untuk diputar!**
                     [
                         [
                             InlineKeyboardButton(
-                                "¹", callback_data=f"plll 0|{query}|{user_id}"
+                                "1️⃣", callback_data=f"plll 0|{query}|{user_id}"
                             ),
                             InlineKeyboardButton(
-                                "²", callback_data=f"plll 1|{query}|{user_id}"
+                                "2️⃣", callback_data=f"plll 1|{query}|{user_id}"
                             ),
                             InlineKeyboardButton(
-                                "³", callback_data=f"plll 2|{query}|{user_id}"
+                                "3️⃣", callback_data=f"plll 2|{query}|{user_id}"
                             ),
                         ],
                         [
                             InlineKeyboardButton(
-                                "⁴", callback_data=f"plll 3|{query}|{user_id}"
+                                "4️⃣", callback_data=f"plll 3|{query}|{user_id}"
                             ),
                             InlineKeyboardButton(
-                                "⁵", callback_data=f"plll 4|{query}|{user_id}"
+                                "5️⃣", callback_data=f"plll 4|{query}|{user_id}"
                             ),
                         ],
-                        [InlineKeyboardButton("ᴛᴜᴛᴜᴘ", callback_data="cls")],
+                        [InlineKeyboardButton("Close", callback_data="cls")],
                     ]
                 )
                 await message.reply(toxxt, disable_web_page_preview=True, reply_markup=key)
@@ -501,9 +506,14 @@ async def kontol(_, CallbackQuery):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{GROUP}"),
-                InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/{CHANNEL}"),
-            ]
+                InlineKeyboardButton(text="▶️", callback_data=f'cbresume'),
+                InlineKeyboardButton(text="⏸️", callback_data=f'cbpause'),
+                InlineKeyboardButton(text="⏭️", callback_data=f'skipvc'),
+                InlineKeyboardButton(text="⏹️", callback_data=f'cbstop')
+            ],
+            [
+                InlineKeyboardButton(text="Tutup", callback_data="close")
+            ],
         ]
     )
     chat_id = CallbackQuery.message.chat.id
