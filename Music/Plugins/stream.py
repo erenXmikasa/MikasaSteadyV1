@@ -214,16 +214,13 @@ async def videoplay(c: Client, message: Message):
                 pos = add_to_queue(chat_id, title, dl, link, "Video", Q)
                 await loser.delete()
                 requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                await app.send_photo(
+                await app.send_message(
                     chat_id,
-                    photo="cache/IMG_20211203_150634_304.jpg",
-                    caption=f"""
+                    f"""
 💡 **Trek ditambahkan ke antrian**
-
 🏷 **Judul:** [{title[:999]}]({link})
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
-
 #️⃣ **Posisi antrian** {pos}
 """,
                     disable_web_page_preview=True,
@@ -255,10 +252,9 @@ async def videoplay(c: Client, message: Message):
                 add_to_queue(chat_id, title, dl, link, "Video", Q)
                 await loser.delete()
                 requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                await app.send_photo(
+                await app.send_message(
                     chat_id,
-                    photo="cache/IMG_20211203_150634_304.jpg",
-                    caption=f"""
+                    f"""
 ▷ **Memutar video dimulai**
 🏷 **Judul:** [{title[:999]}]({link})
 ⏱️ **Durasi:** {duration}
@@ -305,7 +301,7 @@ async def videoplay(c: Client, message: Message):
                 requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
                 await app.send_photo(
                     chat_id,
-                    photo="cache/IMG_20211203_150634_304.jpg",
+                    photo=thumb,
                     caption=f"""
 💡 **Trek ditambahkan ke antrian**
 🏷 **Judul:** [{title[:999]}]({url})
@@ -338,7 +334,7 @@ async def videoplay(c: Client, message: Message):
                     requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
                     await app.send_photo(
                         chat_id,
-                        photo="cache/IMG_20211203_150634_304.jpg",
+                        photo=thumb,
                         caption=f"""
 ▷ **Memutar video dimulai**
 🏷 **Judul:** [{title[:999]}]({url})
@@ -443,7 +439,7 @@ async def videoplay(c: Client, message: Message):
                 requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
                 await app.send_photo(
                     chat_id,
-                    photo="cache/IMG_20211203_150634_304.jpg",
+                    photo=thumb,
                     caption=f"""
 💡 **Trek ditambahkan ke antrian**
 🏷 **Judul:** [{songname[:999]}]({url})
@@ -474,9 +470,9 @@ async def videoplay(c: Client, message: Message):
                     add_to_queue(chat_id, title, ytlink, url, "Video", Q)
                     await loser.delete()
                     requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                    await app.send_photo(
+                    await message.reply_photo(
                         chat_id,
-                        photo="cache/IMG_20211203_150634_304.jpg",
+                        photo=thumb,
                         caption=f"""
 ▷ **Memutar video dimulai**
 🏷 **Judul:** [{songname[:999]}]({url})
@@ -545,10 +541,10 @@ async def kontol(_, CallbackQuery):
     else:
         if chat_id in QUEUE:
             pos = add_to_queue(chat_id, songname, ytlink, url, "Video", Q)
-                await app.send_photo(
-                    chat_id,
-                    photo="cache/IMG_20211203_150634_304.jpg",
-                      caption=f"""
+            await app.send_photo(
+                chat_id,
+                photo=thumb,
+                caption=f"""
 💡 **Trek ditambahkan ke antrian**
 🏷 **Judul:** [{songname[:999]}]({url})
 ⏱️ **Durasi:** {duration}
@@ -580,7 +576,7 @@ async def kontol(_, CallbackQuery):
                 add_to_queue(chat_id, songname, ytlink, url, "Video", Q)
                 await app.send_photo(
                     chat_id,
-                    photo="cache/IMG_20211203_150634_304.jpg",             
+                    photo=thumb,
                     caption=f"""
 ▷ **Memutar video dimulai**
 🏷 **Judul:** [{songname[:999]}]({url})
