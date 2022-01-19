@@ -69,7 +69,7 @@ async def ytdl(link):
         return 0, stderr.decode()
     
 
-@Client.on_message(command(["videoplay") & filters.group)
+@Client.on_message(command(["videoplay"]) & filters.group)
 async def videoplay(c: Client, message: Message):
     replied = message.reply_to_message
     chat_id = message.chat.id
@@ -214,9 +214,9 @@ async def videoplay(c: Client, message: Message):
                 pos = add_to_queue(chat_id, title, dl, link, "Video", Q)
                 await loser.delete()
                 requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                await app.send_message(
-                    chat_id,
-                    f"""
+                await message.reply_photo(
+                    photo="cache/IMG_20211203_150634_304.jpg",
+                    caption=f"""
 💡 **Trek ditambahkan ke antrian**
 
 🏷 **Judul:** [{title[:999]}]({link})
@@ -254,15 +254,13 @@ async def videoplay(c: Client, message: Message):
                 add_to_queue(chat_id, title, dl, link, "Video", Q)
                 await loser.delete()
                 requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                await app.send_message(
-                    chat_id,
-                    f"""
+                await message.reply_photo(
+                    photo="cache/IMG_20211203_150634_304.jpg",
+                    caption=f"""
 ▷ **Memutar video dimulai**
-
 🏷 **Judul:** [{title[:999]}]({link})
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
-
 💬 **Diputar di:** {message.chat.title}
 """,
                     disable_web_page_preview=True,
@@ -303,16 +301,13 @@ async def videoplay(c: Client, message: Message):
             if chat_id in QUEUE:
                 pos = add_to_queue(chat_id, title, ytlink, url, "Video", Q)
                 requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                await app.send_photo(
-                    chat_id,
-                    photo=thumb,
+                await message.reply_photo(
+                    photo="cache/IMG_20211203_150634_304.jpg",
                     caption=f"""
 💡 **Trek ditambahkan ke antrian**
-
 🏷 **Judul:** [{title[:999]}]({url})
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
-
 #️⃣ **Posisi antrian** {pos}
 """,
                     reply_markup=keyboard,
@@ -338,16 +333,13 @@ async def videoplay(c: Client, message: Message):
                     add_to_queue(chat_id, title, ytlink, url, "Video", Q)
                     await kz.delete()
                     requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                    await app.send_photo(
-                        chat_id,
-                        photo=thumb,
+                    await message.reply_photo(
+                        photo="cache/IMG_20211203_150634_304.jpg",
                         caption=f"""
 ▷ **Memutar video dimulai**
-
 🏷 **Judul:** [{title[:999]}]({url})
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
-
 💬 **Diputar di:** {message.chat.title}
 """,
                         reply_markup=keyboard,
@@ -445,16 +437,13 @@ async def videoplay(c: Client, message: Message):
                 pos = add_to_queue(chat_id, songname, ytlink, url, "Video", Q)
                 await loser.delete()
                 requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
-                await app.send_photo(
-                    chat_id,
-                    photo=thumb,
+                await message.reply_photo(
+                    photo="cache/IMG_20211203_150634_304.jpg",
                     caption=f"""
 💡 **Trek ditambahkan ke antrian**
-
 🏷 **Judul:** [{songname[:999]}]({url})
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
-
 #️⃣ **Posisi antrian** {pos}
 """,
                     reply_markup=keyboard,
@@ -481,15 +470,12 @@ async def videoplay(c: Client, message: Message):
                     await loser.delete()
                     requester = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
                     await message.reply_photo(
-                        chat_id,
-                        photo=thumb,
+                        photo="cache/IMG_20211203_150634_304.jpg",
                         caption=f"""
 ▷ **Memutar video dimulai**
-
 🏷 **Judul:** [{songname[:999]}]({url})
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
-
 💬 **Diputar di:** {message.chat.title}
 """,
                         reply_markup=keyboard,
@@ -553,16 +539,13 @@ async def kontol(_, CallbackQuery):
     else:
         if chat_id in QUEUE:
             pos = add_to_queue(chat_id, songname, ytlink, url, "Video", Q)
-            await app.send_photo(
-                chat_id,
-                photo=thumb,
-                caption=f"""
+                  await message.reply_photo(
+                      photo="cache/IMG_20211203_150634_304.jpg",
+                      caption=f"""
 💡 **Trek ditambahkan ke antrian**
-
 🏷 **Judul:** [{songname[:999]}]({url})
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
-
 #️⃣ **Posisi antrian** {pos}
 """,
                 reply_markup=keyboard,
@@ -588,16 +571,13 @@ async def kontol(_, CallbackQuery):
                     stream_type=StreamType().pulse_stream,
                 )
                 add_to_queue(chat_id, songname, ytlink, url, "Video", Q)
-                await app.send_photo(
-                    chat_id,
-                    photo=thumb,
+                await message.reply_photo(
+                    photo="cache/IMG_20211203_150634_304.jpg",
                     caption=f"""
 ▷ **Memutar video dimulai**
-
 🏷 **Judul:** [{songname[:999]}]({url})
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
-
 💬 **Diputar di:** {CallbackQuery.message.chat.title}
 """,
                     reply_markup=keyboard,
