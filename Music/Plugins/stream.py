@@ -351,7 +351,7 @@ async def videoplay(c: Client, message: Message):
         if len(message.command) < 2:
             await message.reply_text(
                 text=f"""
-**{rpk} Anda tidak memberikan judul yang Benar.
+**{rpk} Usage: /videoplay [Music Name or Youtube Link or Reply to Audio].
 """,
             )
         else:
