@@ -1,4 +1,4 @@
-import psutil
+
 import asyncio
 import os
 import random
@@ -72,9 +72,6 @@ async def ytdl(link):
 
 @Client.on_message(command(["videoplay"]) & filters.group)
 async def videoplay(c: Client, message: Message):
-    cpu_len = psutil.cpu_percent(interval=0.5)
-    ram = psutil.virtual_memory().percent
-
     replied = message.reply_to_message
     chat_id = message.chat.id
     user_id = message.from_user.id
@@ -263,7 +260,6 @@ async def videoplay(c: Client, message: Message):
 🏷 **Judul:** [{title[:999]}]({link})
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
-💬 **Ram:** {ram}%
 """,
                     disable_web_page_preview=True,
                     reply_markup=keyboard,
@@ -344,7 +340,6 @@ async def videoplay(c: Client, message: Message):
 🏷 **Judul:** [{title[:999]}]({url})
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
-💬 **Ram:** {ram}%
 """,
                         reply_markup=keyboard,
                     )
@@ -482,7 +477,6 @@ async def videoplay(c: Client, message: Message):
 🏷 **Judul:** [{songname[:999]}]({url})
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
-💬 **Ram:** {ram}%
 """,
                         reply_markup=keyboard,
                     )
@@ -586,7 +580,6 @@ async def kontol(_, CallbackQuery):
 🏷 **Judul:** [{songname[:999]}]({url})
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
-💬 **Ram:** {ram}%
 """,
                     reply_markup=keyboard,
                 )
