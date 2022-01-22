@@ -263,7 +263,7 @@ async def videoplay(c: Client, message: Message):
 🏷 **Judul:** [{title[:999]}]({link})
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
-💬 **Ram:**{ram}%
+💬 **Ram:** {ram}%
 """,
                     disable_web_page_preview=True,
                     reply_markup=keyboard,
@@ -344,7 +344,7 @@ async def videoplay(c: Client, message: Message):
 🏷 **Judul:** [{title[:999]}]({url})
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
-💬 **Ram:**{ram}%
+💬 **Ram:** {ram}%
 """,
                         reply_markup=keyboard,
                     )
@@ -482,7 +482,7 @@ async def videoplay(c: Client, message: Message):
 🏷 **Judul:** [{songname[:999]}]({url})
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
-💬 **Ram:**{ram}%
+💬 **Ram:** {ram}%
 """,
                         reply_markup=keyboard,
                     )
@@ -586,7 +586,7 @@ async def kontol(_, CallbackQuery):
 🏷 **Judul:** [{songname[:999]}]({url})
 ⏱️ **Durasi:** {duration}
 🎧 **Atas permintaan:** {requester}
-💬 **Ram:**{ram}%
+💬 **Ram:** {ram}%
 """,
                     reply_markup=keyboard,
                 )
