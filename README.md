@@ -42,7 +42,6 @@
 
 # DEPLOY
 
-<p align="center"><a href="https://heroku.com/deploy?template=https://github.com/918127726/Yukki">
-  <img src="https://img.shields.io/badge/Deploy%20To%20Heroku-aqua?style=flat&logo=heroku" width="325" height="50.100" /></a></p>
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/5GVckyy/Steady-Project-v1)
 
 
