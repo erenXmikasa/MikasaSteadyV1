@@ -38,8 +38,6 @@
 
 + Sudo Users can execute any command in any groups
 
-# Yukki x Steady music op
-
 # DEPLOY
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/5GVckyy/Steady-Project-v1)
