@@ -2,7 +2,9 @@
   <img src="https://telegra.ph/file/add31c6018ba67309bd3b.jpg">
 </p>
 
-<h4><p align="center"> Steady Music Player </p></h4>
+<h4><p align="center"> [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/5GVckyy/Steady-Project-v1)
+
+ </p></h4>
 
 <h3>Requirements 📝</h3>
 
