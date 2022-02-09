@@ -3,8 +3,8 @@ aiofiles
 asyncio
 ffmpeg-python
 pillow
-pyrogram
-py-tgcalls
+pyrogram==1.2.20
+py-tgcalls==0.8.5
 pytube
 wget
 python-dotenv
