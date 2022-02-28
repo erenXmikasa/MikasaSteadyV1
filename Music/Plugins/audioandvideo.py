@@ -9,36 +9,29 @@ from pyrogram.types import (
     InputMediaAudio,
     Message,
 )
-
+from yt_dlp import YoutubeDL
+from pyrogram import Client, filters
 import wget
+import os
+from os import path
+from Music.MusicUtilities.helpers.thumbnails import down_thumb
+from Music import app
+from Music.MusicUtilities.helpers.inline import others_markup, play_markup
+from pykeyboard import InlineKeyboard
+from pyrogram import filters
+from pyrogram.types import InlineKeyboardButton
 import yt_dlp
 import asyncio
-
-from os import path
 from PIL import Image
-from yt_dlp import YoutubeDL
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
-from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardButton
-
-from Music import app
-from ..MusicUtilities.helpers.thumbnails import down_thumb
-from Music.MusicUtilities.helpers.inline import play_markup, others_markup
-
-from pykeyboard import InlineKeyboard
-
-
 user_time = {}
 youtube_next_fetch = 0
 flex = {}
-
-
 @Client.on_callback_query(filters.regex(pattern=r"other"))
 async def closesmex(_,CallbackQuery):
     callback_data = CallbackQuery.data.strip()
     callback_request = callback_data.split(None, 1)[1]
-    await CallbackQuery.answer("menu opened")
     userid = CallbackQuery.from_user.id 
     videoid, user_id = callback_request.split("|")    
     buttons = others_markup(videoid, user_id)
@@ -49,12 +42,10 @@ async def closesmex(_,CallbackQuery):
 async def goback(_,CallbackQuery):
     callback_data = CallbackQuery.data.strip()
     callback_request = callback_data.split(None, 1)[1]
-    await CallbackQuery.answer("menu closed")
     userid = CallbackQuery.from_user.id 
     videoid, user_id = callback_request.split("|")    
     buttons = play_markup(videoid, user_id)
     await CallbackQuery.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(buttons))
-
 
 @Client.on_callback_query(filters.regex(pattern=r"good"))
 async def good(_,CallbackQuery):
@@ -63,29 +54,17 @@ async def good(_,CallbackQuery):
     userid = CallbackQuery.from_user.id 
     videoid, user_id = callback_request.split("|")    
     buttons = others_markup(videoid, user_id)
-    await CallbackQuery.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(buttons))
-
-
+    await CallbackQuery.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(buttons))    
+    
 @Client.on_callback_query(filters.regex("close"))
-async def close_admin(_, query: CallbackQuery):
-    a = await _.get_chat_member(query.message.chat.id, query.from_user.id)
-    if not a.can_manage_voice_chats:
-        return await query.answer("💡 Only admin with manage video chat permission that can tap this button !", show_alert=True)
+async def closed(_, query: CallbackQuery):
     await query.message.delete()
-    await query.answer()
-
-
-@Client.on_callback_query(filters.regex("cls"))
-async def close_user(_, query: CallbackQuery):
-    await query.message.delete()
-    await query.answer()
-
+    await query.answer()  
 
 @Client.on_callback_query(filters.regex(pattern=r"down"))
 async def down(_,CallbackQuery):
-    await CallbackQuery.answer()
-
-
+    await CallbackQuery.answer()  
+    
 @Client.on_callback_query(filters.regex(pattern=r"gets"))
 async def getspy(_,CallbackQuery):  
     callback_data = CallbackQuery.data.strip()
@@ -97,7 +76,7 @@ async def getspy(_,CallbackQuery):
     try:
         if userLastDownloadTime > datetime.now():
             wait_time = round((userLastDownloadTime - datetime.now()).total_seconds() / 60, 2)
-            return await CallbackQuery.message.reply_text(f"hai {Name}, please wait for {wait_time} min(s) before do next download request.")
+            return await CallbackQuery.message.reply_text(f"Okay {Name}, Fast AF Boiii.. `Wait for {wait_time} min(s) before next download request")
     except:
         pass
     url = (f"https://www.youtube.com/watch?v={videoid}")
@@ -108,7 +87,7 @@ async def getspy(_,CallbackQuery):
         user_time[userid] = now + \
                                      timedelta(minutes=youtube_next_fetch)
     except Exception:
-        return await CallbackQuery.message.reply_text("❌ failed to fetch data")
+        return await CallbackQuery.message.reply_text("Failed To Fetch Data...")
     j = 0
     a = 0
     b = 0
@@ -171,10 +150,10 @@ async def getspy(_,CallbackQuery):
                     f += 1
                     a6 = InlineKeyboardButton(text=f"(2160)p 📹 {humanbytes(x['filesize'])}", callback_data=f"ytdata video||{x['format_id']}||{videoid}")   
         else:
-            return await CallbackQuery.message.reply_text("❌ video format not found.")
-    universal = InlineKeyboardButton(text="🗑 Close", callback_data=f'close2')
+            return await CallbackQuery.message.reply_text("Video Format Not Found.")
+    universal = InlineKeyboardButton(text="🗑 Close Menu", callback_data=f'close2')
     if j == 0:
-        return await CallbackQuery.message.reply_text("❌ video format not found.")
+        return await CallbackQuery.message.reply_text("Video Format Not Found..")
     elif j == 1:
         key = InlineKeyboardMarkup(
             [
@@ -182,8 +161,8 @@ async def getspy(_,CallbackQuery):
                     a1,
                 ],
                 [
-                    InlineKeyboardButton(text="⬅️ Back", callback_data=f'good {videoid}|{user_id}'),
-                    InlineKeyboardButton(text="🗑 Close", callback_data=f'close2')
+                    InlineKeyboardButton(text="⬅️ Go Back", callback_data=f'good {videoid}|{user_id}'),
+                    InlineKeyboardButton(text="🗑 Close Menu", callback_data=f'close2')
                 ]    
             ]
         )
@@ -195,8 +174,8 @@ async def getspy(_,CallbackQuery):
                     a2,
                 ],
                 [
-                    InlineKeyboardButton(text="⬅️ Back", callback_data=f'good {videoid}|{user_id}'),
-                    InlineKeyboardButton(text="🗑 Close", callback_data=f'close2')
+                    InlineKeyboardButton(text="⬅️ Go Back", callback_data=f'good {videoid}|{user_id}'),
+                    InlineKeyboardButton(text="🗑 Close Menu", callback_data=f'close2')
                 ]    
             ]
         )  
@@ -211,8 +190,8 @@ async def getspy(_,CallbackQuery):
                     a3,
                 ],
                 [
-                    InlineKeyboardButton(text="⬅️ Back", callback_data=f'good {videoid}|{user_id}'),
-                    InlineKeyboardButton(text="🗑 Close", callback_data=f'close2')
+                    InlineKeyboardButton(text="⬅️ Go Back", callback_data=f'good {videoid}|{user_id}'),
+                    InlineKeyboardButton(text="🗑 Close Menu", callback_data=f'close2')
                 ]    
             ]
         ) 
@@ -228,8 +207,8 @@ async def getspy(_,CallbackQuery):
                     a4,
                 ],
                 [
-                    InlineKeyboardButton(text="⬅️ Back", callback_data=f'good {videoid}|{user_id}'),
-                    InlineKeyboardButton(text="🗑 Close", callback_data=f'close2')
+                    InlineKeyboardButton(text="⬅️ Go Back", callback_data=f'good {videoid}|{user_id}'),
+                    InlineKeyboardButton(text="🗑 Close Menu", callback_data=f'close2')
                 ]    
             ]
         )    
@@ -248,8 +227,8 @@ async def getspy(_,CallbackQuery):
                     a5,
                 ],
                 [
-                    InlineKeyboardButton(text="⬅️ Back", callback_data=f'good {videoid}|{user_id}'),
-                    InlineKeyboardButton(text="🗑 Close", callback_data=f'close2')
+                    InlineKeyboardButton(text="⬅️ Go Back", callback_data=f'good {videoid}|{user_id}'),
+                    InlineKeyboardButton(text="🗑 Close Menu", callback_data=f'close2')
                 ]    
             ]
         )  
@@ -269,13 +248,13 @@ async def getspy(_,CallbackQuery):
                     a6,
                 ],
                 [
-                    InlineKeyboardButton(text="⬅️ Back", callback_data=f'good {videoid}|{user_id}'),
-                    InlineKeyboardButton(text="🗑 Close", callback_data=f'close2')
+                    InlineKeyboardButton(text="⬅️ Go Back", callback_data=f'good {videoid}|{user_id}'),
+                    InlineKeyboardButton(text="🗑 Close Menu", callback_data=f'close2')
                 ]    
             ]
         )    
     else:
-        return await CallbackQuery.message.reply_text("❌ video format not found.")
+        return await CallbackQuery.message.reply_text("Video Format Not Found....")
     await CallbackQuery.edit_message_reply_markup(reply_markup=key)
 
     
@@ -300,8 +279,8 @@ async def ytdata(_,CallbackQuery):
                     a2,
                 ],
                 [
-                    InlineKeyboardButton(text="⬅️ Back", callback_data=f'good {videoid}|{user_id}'),
-                    InlineKeyboardButton(text="🗑 Close", callback_data=f'close2')
+                    InlineKeyboardButton(text="⬅️ Go Back", callback_data=f'good {videoid}|{user_id}'),
+                    InlineKeyboardButton(text="🗑 Close Menu", callback_data=f'close2')
                 ]    
             ]
         )
@@ -311,7 +290,7 @@ async def ytdata(_,CallbackQuery):
 inl = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(text="📥 Downloading...", callback_data=f'down')
+                    InlineKeyboardButton(text="Downloading......", callback_data=f'down')
                 ]   
             ]
         )
@@ -319,7 +298,7 @@ inl = InlineKeyboardMarkup(
 upl = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(text="📤 Uploading...", callback_data=f'down')
+                    InlineKeyboardButton(text="Uploading......", callback_data=f'down')
                 ]   
             ]
         )
@@ -327,17 +306,17 @@ upl = InlineKeyboardMarkup(
 def inl_mark(videoid, user_id):
     buttons= [
             [
-                InlineKeyboardButton(text="❌ download or upload failed.", callback_data=f'down')
+                InlineKeyboardButton(text="Download or Upload Failed......", callback_data=f'down')
             ],
             [
-                InlineKeyboardButton(text="⬅️ Back", callback_data=f'good {videoid}|{user_id}'),
-                InlineKeyboardButton(text="🗑 Close", callback_data=f'close2')
+                InlineKeyboardButton(text="⬅️ Go Back", callback_data=f'good {videoid}|{user_id}'),
+                InlineKeyboardButton(text="🗑 Close Menu", callback_data=f'close2')
             ],
         ]
     return buttons 
 
 
-ytdl_opts = {"format" : "bestaudio/best", "quiet":True}
+ytdl_opts = {"format" : "bestaudio", "quiet":True}
 
 
 @Client.on_callback_query(filters.regex(pattern=r"boom"))
@@ -360,28 +339,27 @@ async def boom(_,CallbackQuery):
     except Exception as e:
         buttons = inl_mark(videoid, user_id)
         await CallbackQuery.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(buttons)) 
-    mystic = await CallbackQuery.edit_message_text("📥 **download started** !\n\n» Downloading speed could be slow, please wait for a while...", reply_markup = inl)
+    mystic = await CallbackQuery.edit_message_text("Download Started\n\nDownloading speed could be slow. Please hold on..", reply_markup = inl)
     fetched = f"""
-💡 **Media Downloaded.**
-
-🏷 **Name:** {x["title"]}
-⏱ **Duration:** `{round(x["duration"] / 60)}` min(s)
-📣 **Channel:** {x["uploader"]}
-
-⚡️ __Powered by Steady Music AI__"""    
+**Track Downloaded**
+❇️**Title:** {x["title"]}
+⏳**Duration:** {round(x["duration"] / 60)} Mins
+👀**Views:** __{x["view_count"]}__
+🎥**Channel Name:** {x["uploader"]}
+__Youtube Inline Download Powered By Music__ """    
     link = (x["webpage_url"])
     channel = (x["channel_url"])
     perf = (x['uploader'])
     thumbnail_url = (x["thumbnail"])
-    filext = "%(title)s.jpg"
+    filext = "%(title)s.png"
     main =  os.getcwd()
     img = wget.download(thumbnail_url)
     im = Image.open(img).convert("RGB")
     output_directory = os.path.join(os.getcwd(), "search", str(userid))
     if not os.path.isdir(output_directory):
         os.makedirs(output_directory)
-    thumb_image_path = f"{output_directory}.jpg"
-    im.save(thumb_image_path,"jpeg")
+    thumb_image_path = f"{output_directory}.png"
+    im.save(thumb_image_path,"png")
     print(thumb_image_path)
     width = 0
     height = 0
@@ -400,7 +378,7 @@ async def boom(_,CallbackQuery):
             img.resize((320, height))
         else:
             img.resize((90, height))
-        img.save(thumb_image_path, "JPEG")
+        img.save(thumb_image_path, "png")
     audio_command = [
         "yt-dlp",
         "-c",
@@ -459,18 +437,21 @@ async def boom(_,CallbackQuery):
     if med:
         loop.create_task(send_file(CallbackQuery, med, filename, videoid, user_id, link, channel))
     else:
-        print("media not found")
+        print("med not found")
     
 def p_mark(link, channel):
     buttons= [
             [
-                InlineKeyboardButton(text="watch on youtube", url=f'{link}')
+                InlineKeyboardButton(text="Watch on Youtube", url=f'{link}')
+            ],
+            [ 
+                InlineKeyboardButton(text="Visit Youtube Channel", url=f'{channel}')
             ],
         ]
     return buttons    
     
 async def send_file(CallbackQuery, med, filename, videoid, user_id, link, channel):
-    await CallbackQuery.edit_message_text("📤 **upload started** !\n\n» Uploading speed could be slow, please wait for a while...", reply_markup = upl)
+    await CallbackQuery.edit_message_text("Upload Started\n\nUploading speed could be slow. Please hold on..", reply_markup = upl)
     try:
         await app.send_chat_action(chat_id=CallbackQuery.message.chat.id, action="upload_document")
         buttons = p_mark(link, channel)
@@ -527,7 +508,7 @@ def duration(vid_file_path):
             if 'duration' in s:
                 return float(s['duration'])
 
-    raise Exception('duration not found')
+    raise Exception('duration Not found')
     
     
 def humanbytes(num, suffix='B'):
