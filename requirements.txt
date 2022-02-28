@@ -4,7 +4,7 @@ asyncio
 ffmpeg-python
 pillow
 pyrogram
-py-tgcalls==0.8.5
+py-tgcalls==0.8.6
 pytube
 wget
 python-dotenv
@@ -24,7 +24,7 @@ pyromod
 requests
 speedtest-cli
 uvloop
-yt-dlp==2022.2.4
+yt-dlp==2021.11.10.1
 telegraph
 hachoir
 lyricsgenius
