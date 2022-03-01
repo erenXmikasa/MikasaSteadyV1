@@ -17,7 +17,7 @@ async def ban_globally(_, message):
         if "@" in user:
             user = user.replace("@", "")
         user = (await app.get_users(user)
-        from_user = message.from_user.id
+        from_user = message.from_user
         sudoers = await get_sudoers()
         if user.id == from_user.id:
             return await message.reply_text("you can't block yourself !")
@@ -113,7 +113,7 @@ async def unban_globally(_, message):
         user = message.text.split(None, 1)[1]
         if "@" in user:
             user = user.replace("@", "")
-        user = (await app.get_users(user))
+        user = (await app.get_users(user)
         from_user = message.from_user
         sudoers = await get_sudoers()
         if user.id == from_user.id:
