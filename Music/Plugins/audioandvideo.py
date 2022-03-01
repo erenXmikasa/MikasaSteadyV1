@@ -69,13 +69,8 @@ async def good(_,CallbackQuery):
 
 @Client.on_callback_query(filters.regex("close"))
 async def closed(_, query: CallbackQuery):
-
-
-@Client.on_callback_query(filters.regex("cls"))
-async def close_user(_, query: CallbackQuery):
     await query.message.delete()
     await query.answer()
-
 
 @Client.on_callback_query(filters.regex(pattern=r"down"))
 async def down(_,CallbackQuery):
