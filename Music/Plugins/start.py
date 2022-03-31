@@ -33,7 +33,7 @@ pstart_markup=InlineKeyboardMarkup(
                         f"➕ Tambahkan Ke Group ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
                 ],[
                     InlineKeyboardButton(
-                        "📣 Channel", url="https://t.me/vtbchannell"), 
+                        "📣 Channel", url="https://t.me/vecekayehhh"), 
                     InlineKeyboardButton(
                         "👥 Support", url="https://t.me/SteadySupportGroup")
                 ],[
@@ -44,7 +44,7 @@ pstart_markup=InlineKeyboardMarkup(
         ) 
 
 
-@Client.on_message(filters.group & filters.command(["musicstart"]))
+@Client.on_message(filters.group & filters.command(["start"]))
 async def musicstart(_, message: Message):
     chat_id = message.chat.id
     await message.reply_text(
@@ -56,7 +56,7 @@ Untuk bantuan atau bantuan apa pun, Silahkan Chat Owner Atau Join grup kami.""",
        disable_web_page_preview=True
     )
 
-@Client.on_message(filters.group & filters.command(["musichelp"]))
+@Client.on_message(filters.group & filters.command(["help"]))
 async def ghelp(_, message: Message):
     await message.reply_text(
         f"""🕵🏼‍♂️ Perintah dasar:
@@ -87,14 +87,14 @@ async def ghelp(_, message: Message):
 » /rmw - Bersihkan semua file mentah
 » /rmd - Bersihkan semua file yang diunduh
 » /leaveall - Perintahkan pengguna robot keluar dari semua grup
-» /botplayer on/off - Perintahkan pengguna robot bisa memutar musik atau tidak
+» /playmusic on/off - Perintahkan pengguna robot bisa memutar musik atau tidak
 » /usage - Melihat sisa dyno
 » /uptime - tampilkan status waktu aktif robot
 » /usage - tampilkan status waktu aktif robot
 » /cpu - tampilkan prosesor yang digunakan robot""",
     )
     
-@Client.on_message(filters.private & filters.incoming & filters.command("musicstart"))
+@Client.on_message(filters.private & filters.incoming & filters.command("start"))
 async def play(_, message: Message):
     if len(message.command) == 1:
         user_id = message.from_user.id
@@ -175,7 +175,7 @@ async def new_chat(c: Client, m: Message):
                             InlineKeyboardButton("💭 Support", url=f"https://t.me/SteadySupportGroup")
                         ],
                         [
-                            InlineKeyboardButton("👤 Assistant", url=f"https://t.me/steadymusicbot?startgroup=true")
+                            InlineKeyboardButton("👤 Tambahkan Assistant 👤", url=f"https://t.me/steadymusicbot?startgroup=true")
                         ]
                     ]
                 )
