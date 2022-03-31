@@ -16,7 +16,7 @@ from pyrogram.errors import FloodWait
 async def ban_globally(_, message):
     if not message.reply_to_message:
         if len(message.command) < 2:
-            await message.reply_text("**Penggunaan:**\n/block [USERNAME | USER_ID]")
+            await message.reply_text("**Penggunaan:**\n/gban Untuk Si Blokir Si Jamet")
             return
         user = message.text.split(None, 2)[1]
         if "@" in user:
@@ -131,7 +131,7 @@ __**Larangan Global Baru pada Musik**__
 async def unban_globally(_, message):
     if not message.reply_to_message:
         if len(message.command) != 2:
-            await message.reply_text("**Penggunaan:**\n/unblock [USERNAME | USER_ID]")
+            await message.reply_text("**Penggunaan:**\n/gban Untuk Si Blokir Si Jamet")
             return
         user = message.text.split(None, 1)[1]
         if "@" in user:
