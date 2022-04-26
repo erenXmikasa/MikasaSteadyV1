@@ -35,10 +35,10 @@ pstart_markup=InlineKeyboardMarkup(
                     InlineKeyboardButton(
                         "📣 Channel", url="https://t.me/vecekayehhh"), 
                     InlineKeyboardButton(
-                        "👥 Support", url="https://t.me/SteadySupportGroup")
+                        "👥 Group", url="https://t.me/virtualmutualangroup")
                 ],[
                     InlineKeyboardButton(
-                        "❤️ Owner", url="https://t.me/vckyclone")
+                        "🎉 Creator", url="https://t.me/vckyclone")
                 ]
             ]
         ) 
@@ -157,7 +157,7 @@ async def play(_, message: Message):
             else:
                 await message.reply_text(text)
 
-#Join
+#Join group
 
 @Client.on_message(filters.new_chat_members)
 async def new_chat(c: Client, m: Message):
@@ -172,10 +172,10 @@ async def new_chat(c: Client, m: Message):
                     [
                         [
                             InlineKeyboardButton("📣 Channel", url=f"https://t.me/vtbchannell"),
-                            InlineKeyboardButton("💭 Support", url=f"https://t.me/SteadySupportGroup")
+                            InlineKeyboardButton("💭 Group", url=f"https://t.me/virtualmutualangroup")
                         ],
                         [
-                            InlineKeyboardButton("👤 Tambahkan Assistant 👤", url=f"https://t.me/steadymusicbot?startgroup=true")
+                            InlineKeyboardButton("👤 Tambahkan Assistant ke Group 👤", url=f"https://t.me/steadymusicbot?startgroup=true")
                         ]
                     ]
                 )
