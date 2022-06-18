@@ -70,8 +70,8 @@ async def ytdl(link):
         return 0, stderr.decode()
     
 
-@Client.on_message(command(["videoplay"]) & filters.group)
-async def videoplay(c: Client, message: Message):
+@Client.on_message(command(["stedi"]) & filters.group)
+async def stedi(c: Client, message: Message):
     replied = message.reply_to_message
     chat_id = message.chat.id
     user_id = message.from_user.id
