@@ -1,4 +1,3 @@
-
 import asyncio
 import time
 import uvloop
@@ -12,7 +11,6 @@ from Music.MusicUtilities.tgcallsrun import run
 from pytgcalls import idle
 from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 import time
-
 
 Client(
     ':Music:',
@@ -31,7 +29,7 @@ print(f"[INFO]: ASSISTANT STARTED AS {ASSNAME}!")
 async def load_start():
     restart_data = await clean_restart_stage()
     if restart_data:
-        print("[INFO]: SENDING RESTART STATUS TO SERVER")
+        print("[INFO]: SENDING RESTART STATUS TO STEADY SERVER")
         try:
             await app.edit_message_text(
                 restart_data["chat_id"],
@@ -53,10 +51,10 @@ async def load_start():
         except Exception as e:
             print("Error came while clearing db")
             pass     
-            await app.send_message(LOG_GROUP_ID, "Steady Music Telah Aktif")
-                await client.send_message(LOG_GROUP_ID, "Asisten Musik Telah Aktif")
-                print("[INFO]: STARTED BOT AND SENDING THE INFO TO STEADY SERVER SERVER")
-      
+    await app.send_message(LOG_GROUP_ID, "Steady Music Telah Aktif")
+    await client.send_message(LOG_GROUP_ID, "Asisten Musik Telah Aktif")
+    print("[INFO]: STARTED BOT AND SENDING THE INFO TO STEADY SERVER SERVER")
+    
    
 loop = asyncio.get_event_loop()
 loop.run_until_complete(load_start())
@@ -65,4 +63,4 @@ run()
 idle()
 loop.close()
 
-print("[LOG] CLOSING BOT")
+print("[LOG] CLOSING THE BOT")
