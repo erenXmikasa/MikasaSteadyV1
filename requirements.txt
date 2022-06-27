@@ -15,8 +15,6 @@ youtube-search
 speedtest-cli
 dnspython
 future
-pytz==2021.3
-APScheduler==3.8.1
 googletrans
 hurry.filesize
 motor
