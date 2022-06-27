@@ -53,10 +53,10 @@ async def load_start():
         except Exception as e:
             print("Error came while clearing db")
             pass     
-await app.send_message(LOG_GROUP_ID, "Steady Music Telah Aktif")
-    await client.send_message(LOG_GROUP_ID, "Asisten Musik Telah Aktif")
-    print("[INFO]: STARTED BOT AND SENDING THE INFO TO STEADY SERVER SERVER")
-    
+            await app.send_message(LOG_GROUP_ID, "Steady Music Telah Aktif")
+                await client.send_message(LOG_GROUP_ID, "Asisten Musik Telah Aktif")
+                print("[INFO]: STARTED BOT AND SENDING THE INFO TO STEADY SERVER SERVER")
+      
    
 loop = asyncio.get_event_loop()
 loop.run_until_complete(load_start())
