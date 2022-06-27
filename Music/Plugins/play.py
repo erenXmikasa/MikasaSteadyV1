@@ -368,7 +368,7 @@ async def play(_, message: Message):
         thumb ="cache/photo_2021-11-17_22-43-02.jpg"
         buttons = search_markup(ID1, ID2, ID3, ID4, ID5, duration1, duration2, duration3, duration4, duration5, user_id, query)
         await mystic.edit( 
-            f"**❓ Choose Your song:**\n\n1️⃣ </u>{title1}<\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n 2️⃣ <b>{title2}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n3️⃣ <b>{title3}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n4️⃣ <b>{title4}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n5️⃣ <b>{title5}</b>\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\nPowered by 𝙎𝙩𝙚𝙖𝙙𝙮 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩",    
+            f"**❓ Choose Your song:**\n\n1️⃣ <b>[{title1[:27]}]\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n 2️⃣ <b>[{title2[:27]}]\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n3️⃣ <b>[{title3[:27]}]\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n4️⃣ <b>[{title4[:27]}]\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\n\n5️⃣ <b>[{title5[:27]}]\n  ┗  💡 <u>__[More Information](https://t.me/vckyclone)__</u>\nPowered by 𝙎𝙩𝙚𝙖𝙙𝙮 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩",    
             reply_markup=InlineKeyboardMarkup(buttons),
             disable_web_page_preview=True
         )  
