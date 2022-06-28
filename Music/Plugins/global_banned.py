@@ -1,7 +1,7 @@
 from Music import app, SUDOERS, BOT_ID, OWNER
 from Music.MusicUtilities.database.gbanned import (get_gbans_count, is_gbanned_user, add_gban_user, add_gban_user, remove_gban_user)
 from Music.MusicUtilities.database.sudo import (get_sudoers, add_sudo, remove_sudo)
-from Muisc.MusicUtilities.database.chats import get_served_chats
+from Music.MusicUtilities.database.chats import get_served_chats
 from pyrogram import filters, Client
 from pyrogram.types import Message
 from pyrogram.errors import FloodWait
